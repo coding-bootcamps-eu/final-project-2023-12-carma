@@ -5,7 +5,7 @@
   </div>
   <div>
     <!-- Text-Input für die Event-Description, später POST zur API -->
-    <form action="post">
+    <form method="post">
       <input
         type="text"
         name="eventDescription"
@@ -17,7 +17,7 @@
   <div>
     <!-- Datums-Input für das Event, Start und Ende, evt mit Datepicker und range, 
       später POST zur API, Format anpassen zur Darstellung in der Calendar-Component -->
-    <form action="post">
+    <form method="post">
       <input type="datetime" name="eventStart" id="event-start" />
       <input type="datetime" name="eventEnd" id="event-end" />
     </form>
@@ -26,7 +26,7 @@
     <!-- MitfahrerInnen-Input für das Event, am besten dynamisch erzeugt 
         aus der Auto-Gruppe anhand der driver_id, mit Darstellung des Buchstaben-
         Icons, später POST zur API, if checked -> eventParticipants -->
-    <form action="post">
+    <form method="post">
       <select name="eventParticipants" id="event-participants">
         <option value="MitfahrerInnen hinzufügen"></option>
         <option value="driver_id = 1">
@@ -47,14 +47,14 @@
   <div>
     <!--Möglichkeit einen Kommentar zur Fahrt zu hinterlassen, später POST 
       zur API, eventNotes -->
-    <form action="post">
+    <form method="post">
       <textarea id="event-notes" name="eventNotes" rows="5" cols="33" placeholder="Kommentar">
       </textarea>
     </form>
   </div>
   <div>
     <!--Auswahl des EventType, später POST zur API, eventType -->
-    <form action="post">
+    <form method="post">
       <input type="radio" name="eventType" id="freie-fahrt" /><span>oder</span
       ><input type="radio" name="eventType" id="muss-sein" />
     </form>
