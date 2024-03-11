@@ -9,6 +9,6 @@
 export default {}
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
 /* BG Design als background-img anlegen */
 </style>

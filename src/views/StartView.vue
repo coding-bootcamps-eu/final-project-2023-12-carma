@@ -5,7 +5,7 @@
       <h2>ONE - TWO - YOU</h2>
     </div>
     <div>
-      <img src="kreis.png" alt="Kreis orang" class="kreis-orang" />
+      <!--<img src="kreis.png" alt="Kreis orang" class="kreis-orang" />-->
     </div>
     <button><router-link to="/register">neu bei carma?</router-link></button>
     <button><router-link to="/login">log in</router-link></button>
@@ -17,7 +17,7 @@
 export default {}
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .kreis-orang {
   position: absolute; /* Absolute Positionierung für das Bild */
 }
