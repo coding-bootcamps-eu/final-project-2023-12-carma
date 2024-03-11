@@ -4,13 +4,17 @@
     <h1>Deine nächste Fahrt</h1>
   </div>
   <div>
-    <!-- Text-Input für die Event-Description, später POST zur API -->
+    <!-- Text-Input für die Event-Description, später POST zur API, evt noch einmal 
+    auf die Darstellung der maxlength vom text-input schauen, z.B. mit popup 
+    bei hovern lösen -->
     <form method="post">
       <input
         type="text"
         name="eventDescription"
         id="event-description"
-        placeholder="Name der Fahrt"
+        placeholder="Name der Fahrt - max 18 Zeichen lang"
+        minlength="1"
+        maxlength="18"
       />
     </form>
   </div>
