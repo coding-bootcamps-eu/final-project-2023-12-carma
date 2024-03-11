@@ -5,6 +5,7 @@
        <form>
             <input type="email" name="email" placeholder="E-Mail Adresse" />
             <input type="password" name="password" placeholder="Passwort" minlength="8" required /> //Länge und Vorgaben des Passworts
+            <input type="passwordConfirm" name="text" placeholder="Passwort bestätigen"/> 
             <input type="text" name="firstname" placeholder="Vorname" />
             <input type="text" name="lastname" placeholder="Nachname" />
        </form>
