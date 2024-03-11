@@ -3,14 +3,17 @@
     <div>Platzhalter Menü</div>
     <div>Platzhalter Icon Name</div>
     <h2>Hi Maria!</h2>
-    <!--das muss dann mit {{ username }} dynamisiert werden-->
+    <!--das muss dann mit {{ firstname }} dynamisiert werden-->
     <p>Dein Fahrt startet:</p>
     <p>Heute!</p>
-    <!--bzw. hier das Datum der jeweils nächsten Fahrt des Users-->
+    <!-- hier das Datum {{ eventStart }} der jeweils nächsten Fahrt des Users-->
     <div>Platzhalter Kalender</div>
     <p>Dein Auto: Berta</p>
+    <!--dynamisch das Auto, dass dem Benutzer zugeordnet ist-->
     <p>Kilometerstand</p>
+    <!--aktuell aus Datenbank des jeweilige Autos-->
     <p>Deine carma-Points</p>
+    <!--aktuell aus Datenbank, points des jeweiligen users-->
     <p>Danke, dass du dabei bist!</p>
     <p>carma</p>
   </main>
