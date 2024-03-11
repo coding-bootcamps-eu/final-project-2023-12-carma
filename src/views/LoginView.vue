@@ -1,13 +1,13 @@
 <template>
   <main>
     <button><RouterLink to="/">x</RouterLink></button>
-    <h2>Willkommen zurück!</h2>
+    <h1>Willkommen zurück</h1>
     <form>
       <input type="text" name="username" placeholder="Benutzer*innen-Name" />
       <!--Frage: Brauchen wir ein Label oder "reicht" ein placeholder?-->
-      <input type="text" name="password" placeholder="Passwort" />
+      <input type="password" minlength="8" required placeholder="Passwort" />
       <!--Frage: Brauchen wir ein Label oder "reicht" ein placeholder?-->
-      <input type="submit" /><RouterLink to="/home">Log in</RouterLink>/>
+      <button type="submit"><RouterLink to="/home">Log in</RouterLink></button>
     </form>
     <p>carma</p>
   </main>
