@@ -8,7 +8,7 @@
             <input type="number" name="tachostand" placeholder="Aktueller Tachostand" required/> 
             <input type="date" name="waschtermin" placeholder="Letzter Waschtermin" />
        </form>
-       <button>los geht's!</button>
+       <button><router-link to="/home">los geht's!</router-link></button>
        <p>Carma</p>
     </main>
 </template>
