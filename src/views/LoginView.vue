@@ -5,7 +5,7 @@
     <form>
       <input type="text" name="username" placeholder="Benutzer*innen-Name" />
       <!--Frage: Brauchen wir ein Label oder "reicht" ein placeholder?-->
-      <input type="password" minlength="8" required placeholder="Passwort" />
+      <input type="password" name="password" minlength="8" required placeholder="Passwort" />
       <!--Frage: Brauchen wir ein Label oder "reicht" ein placeholder?-->
       <button type="submit"><RouterLink to="/home">Log in</RouterLink></button>
     </form>
