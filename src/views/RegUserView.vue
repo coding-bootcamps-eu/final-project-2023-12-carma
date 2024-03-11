@@ -1,7 +1,7 @@
 <template>
     <main>
         <button><RouterLink to="/">x</RouterLink></button>
-        <h2>Stell dich vor!</h2>
+        <h1>Stell dich vor!</h1>
        <form>
             <input type="email" name="email" placeholder="E-Mail Adresse" />
             <input type="password" name="password" placeholder="Passwort" minlength="8" required /> //Länge und Vorgaben des Passworts
