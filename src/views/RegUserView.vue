@@ -6,8 +6,8 @@
             <input type="email" name="email" placeholder="E-Mail Adresse" />
             <input type="password" name="password" placeholder="Passwort" minlength="8" required /> //Länge und Vorgaben des Passworts
             <input type="passwordConfirm" name="text" placeholder="Passwort bestätigen"/> 
-            <input type="text" name="firstname" placeholder="Vorname" />
-            <input type="text" name="lastname" placeholder="Nachname" />
+            <input type="text" name="firstname" placeholder="Vorname" maxlength="14" style="text-transform: capitalize;"/>
+            <input type="text" name="lastname" placeholder="Nachname" style="text-transform: capitalize;"/>
        </form>
        <button><router-link to="/register/car">Auto-Gruppe erstellen</router-link>≈</button>
        <button><router-link to="/join">Auto-Gruppe beitreten</router-link>≈</button>
