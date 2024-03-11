@@ -8,8 +8,8 @@
             <input type="text" name="firstname" placeholder="Vorname" />
             <input type="text" name="lastname" placeholder="Nachname" />
        </form>
-       <button><router-link to="">Auto-Gruppe erstellen</router-link>≈</button>
-       <button><router-link to="">Auto-Gruppe beitreten</router-link>≈</button>
+       <button><router-link to="/register/car">Auto-Gruppe erstellen</router-link>≈</button>
+       <button><router-link to="/join">Auto-Gruppe beitreten</router-link>≈</button>
        <p>Carma</p>
     </main>
 </template>
