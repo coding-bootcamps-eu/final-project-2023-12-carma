@@ -7,7 +7,6 @@ import RegCarView from '@/views/RegCarView.vue'
 import JoinView from '@/views/JoinView.vue'
 import NewRideView from '@/views/NewRideView.vue'
 import StartRideView from '@/views/StartRideView.vue'
-import DeleteRideView from '@/views/DeleteRideView.vue'
 import EditRideView from '@/views/EditRideView.vue'
 import CalendarView from '@/views/CalendarView.vue'
 import NotesView from '@/views/NotesView.vue'
@@ -24,112 +23,138 @@ const router = createRouter({
     {
       path: '/',
       name: 'start',
-      component: StartView
+      component: StartView,
+      meta: {
+        hasMainMenu: false
+      }
     },
     {
       path: '/login',
       name: 'login',
-      component: LoginView
+      component: LoginView,
+      meta: {
+        hasMainMenu: false
+      }
     },
     {
       path: '/register',
       name: 'register',
-      component: RegUserView
+      component: RegUserView,
+      meta: {
+        hasMainMenu: false
+      }
     },
     {
       path: '/register/car',
       name: 'register-car',
-      component: RegCarView
+      component: RegCarView,
+      meta: {
+        hasMainMenu: false
+      }
     },
     {
       path: '/join',
       name: 'join',
-      component: JoinView
+      component: JoinView,
+      meta: {
+        hasMainMenu: false
+      }
     },
     {
       path: '/home',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        hasMainMenu: true
+      }
     },
     {
       path: '/new-ride',
       name: 'new-ride',
-      component: NewRideView
+      component: NewRideView,
+      meta: {
+        hasMainMenu: false
+      }
     },
     {
       path: '/start-ride',
       name: 'start-ride',
-      component: StartRideView
-    },
-    // {
-    //   path: '/finish-ride',
-    //   name: 'finish-ride',
-    //   component: FinishRideView //??? ist component von start-ride
-    // },
-    // {
-    //   path: '/new-ride-user',
-    //   name: 'new-ride-user',
-    //   component: NewRideUserView //???
-    // },
-    {
-      path: '/delete-ride',
-      name: 'delete-ride',
-      component: DeleteRideView
+      component: StartRideView,
+      meta: {
+        hasMainMenu: true
+      }
     },
     {
       path: '/edit-ride',
       name: 'edit-ride',
-      component: EditRideView
+      component: EditRideView,
+      meta: {
+        hasMainMenu: false
+      }
     },
-    // {
-    //   path: '/menu',
-    //   name: 'menu',
-    //   component: MenuView //??? entweder in der app.vue einbinden oder als childroute
-    // },
     {
       path: '/calendar',
       name: 'calendar',
-      component: CalendarView
+      component: CalendarView,
+      meta: {
+        hasMainMenu: true
+      }
     },
     {
       path: '/notes',
       name: 'notes',
-      component: NotesView
+      component: NotesView,
+      meta: {
+        hasMainMenu: false
+      }
     },
     {
       path: '/about',
       name: 'about',
-      component: AboutView
+      component: AboutView,
+      meta: {
+        hasMainMenu: false
+      }
     },
     {
       path: '/legal',
       name: 'legal',
-      component: LegalView
+      component: LegalView,
+      meta: {
+        hasMainMenu: false
+      }
     },
-    // {
-    //   path: '/logout',
-    //   name: 'logout',
-    //   component: LogoutView //???
-    // },
     {
       path: '/ciao',
       name: 'ciao',
-      component: CiaoView
+      component: CiaoView,
+      meta: {
+        hasMainMenu: false
+      }
     },
     {
       path: '/logbook',
       name: 'logbook',
-      component: LogbookView
+      component: LogbookView,
+      meta: {
+        hasMainMenu: false
+      }
     },
     {
       path: '/map',
       name: 'map',
-      component: MapView
+      component: MapView,
+      meta: {
+        hasMainMenu: false
+      }
     },
     {
       path: '/carma-points',
       name: 'carma-points',
-      component: CarmaPointsView
+      component: CarmaPointsView,
+      meta: {
+        hasMainMenu: false
+      }
     }
   ]
 })
