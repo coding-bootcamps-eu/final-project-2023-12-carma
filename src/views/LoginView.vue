@@ -1,16 +1,15 @@
+<!--button zurück angepasst, email statt benutzer:in, main, carma platzhalter entfernt, required zugefügt cm-->
+
 <template>
-  <main>
-    <button><RouterLink to="/">x</RouterLink></button>
-    <h1>Willkommen zurück</h1>
-    <form>
-      <input type="text" name="username" placeholder="Benutzer*innen-Name" />
-      <!--Frage: Brauchen wir ein Label oder "reicht" ein placeholder?-->
-      <input type="password" name="password" minlength="8" required placeholder="Passwort" />
-      <!--Frage: Brauchen wir ein Label oder "reicht" ein placeholder?-->
-      <button type="submit"><RouterLink to="/home">Log in</RouterLink></button>
-    </form>
-    <p>carma</p>
-  </main>
+  <button><RouterLink to="/"></RouterLink></button>
+  <h1>Willkommen zurück</h1>
+  <form>
+    <input type="email" name="email" placeholder="E-Mail Adresse" required />
+    <!--Frage: Brauchen wir ein Label oder "reicht" ein placeholder?-->
+    <input type="password" name="password" minlength="8" required placeholder="Passwort" />
+    <!--Frage: Brauchen wir ein Label oder "reicht" ein placeholder?-->
+    <button type="submit"><RouterLink to="/home">Log in</RouterLink></button>
+  </form>
 </template>
 
 <script>

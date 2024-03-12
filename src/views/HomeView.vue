@@ -1,24 +1,19 @@
 <template>
-  <main>
-    <div>Platzhalter Menü</div>
-    <div>Platzhalter Icon Name</div>
-    <div v-for="user in usersStore.users" :key="user.id">
-      <h2 v-if="user.isLoggedIn">Hi {{ user.firstName }}!</h2>
-    </div>
-    <!--das muss dann mit {{ firstname }} dynamisiert werden-->
-    <p>Dein Fahrt startet:</p>
-    <p>Heute!</p>
-    <!-- hier das Datum {{ eventStart }} der jeweils nächsten Fahrt des Users-->
-    <div>Platzhalter Kalender</div>
-    <p>Dein Auto: Berta</p>
-    <!--dynamisch das Auto, dass dem Benutzer zugeordnet ist-->
-    <p>Kilometerstand</p>
-    <!--aktuell aus Datenbank des jeweilige Autos-->
-    <p>Deine carma-Points</p>
-    <!--aktuell aus Datenbank, points des jeweiligen users-->
-    <p>Danke, dass du dabei bist!</p>
-    <p>carma</p>
-  </main>
+  <!--h1, menue, main, carma platzhalter entfernt, autoname und kilometerstand über den kalender gesetzt, carma-punkte weg cm-->
+
+  <div>Platzhalter Icon Name</div>
+  <div v-for="user in usersStore.users" :key="user.id">
+    <h1 v-if="user.isLoggedIn">Hi {{ user.firstName }}!</h1>
+  </div>
+  <!--das muss dann mit {{ firstname }} dynamisiert werden-->
+  <p>Dein Fahrt startet:</p>
+  <p>Heute!</p>
+  <p>Dein Auto: Berta</p>
+  <!--dynamisch das Auto, dass dem Benutzer zugeordnet ist-->
+  <p>Kilometerstand</p>
+  <!--aktuell aus Datenbank des jeweilige Autos-->
+  <!-- hier das Datum {{ eventStart }} der jeweils nächsten Fahrt des Users-->
+  <div>Platzhalter Kalender</div>
 </template>
 
 <script>
