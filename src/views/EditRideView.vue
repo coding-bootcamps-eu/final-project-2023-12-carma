@@ -51,28 +51,26 @@
 
 <script>
 export default {
-  // data() {
-  //   return {
-  //     eventDescription: 'Fahrt zum Meer',
-  //     eventTypeP: 'voraus!',
-  //     eventStart: '',
-  //     eventEnd: '',
-  //     eventNote: '',
-  //     selectedParticipants: [],
-  //     drivers: [
-  //       { id: 1, firstName: 'Maria' },
-  //       { id: 2, firstName: 'Doro' },
-  //       { id: 3, firstName: 'Christoph' },
-  //       { id: 4, firstName: 'Lorenz' }
-  //     ]
-  //   }
-  // },
-  // methods: {
-  //   submitForm() {
-  //   },
-  //   cancel() {
-  //   }
-  // }
+  data() {
+    return {
+      eventDescription: 'Fahrt zum Meer',
+      eventTypeP: 'voraus!',
+      eventStart: '',
+      eventEnd: '',
+      eventNote: '',
+      selectedParticipants: [],
+      drivers: [
+        { id: 1, firstName: 'Maria' },
+        { id: 2, firstName: 'Doro' },
+        { id: 3, firstName: 'Christoph' },
+        { id: 4, firstName: 'Lorenz' }
+      ]
+    }
+  },
+  methods: {
+    submitForm() {},
+    cancel() {}
+  }
 }
 </script>
 
