@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useUserStore = defineStore('counter', {
+export const useUsersStore = defineStore('users', {
   state() {
     return {
       users: [
@@ -40,5 +40,6 @@ export const useUserStore = defineStore('counter', {
     }
   },
   getters: {},
-  actions: {}
+  actions: {},
+  persist: true
 })

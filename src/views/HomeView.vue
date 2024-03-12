@@ -2,7 +2,7 @@
   <main>
     <div>Platzhalter Menü</div>
     <div>Platzhalter Icon Name</div>
-    <div v-for="user in userStore.users" :key="user.id">
+    <div v-for="user in usersStore.users" :key="user.id">
       <h2 v-if="user.isLoggedIn">Hi {{ user.firstName }}!</h2>
     </div>
     <!--das muss dann mit {{ firstname }} dynamisiert werden-->
@@ -22,14 +22,14 @@
 </template>
 
 <script>
-import { useUserStore } from '@/stores/user'
+import { useUsersStore } from '@/stores/users'
 
 export default {
   setup() {
-    const userStore = useUserStore()
+    const usersStore = useUsersStore()
 
     return {
-      userStore
+      usersStore
     }
   }
 }
@@ -46,4 +46,4 @@ Menü und Kalender Components einbauen
 Styling
 Username und Datum nächste Fahrt aus Datenbank fetchen
 Autoname, Kilometerstand und carma-Punktestand aus Datenbank fetchen
--->
+-->@/stores/users
