@@ -1,22 +1,16 @@
+<!--Menü-Platzhalter, main, carma entfernt, required zugefügt cm-->
 <template>
-    <main>
-        <button><RouterLink to="/register">back</RouterLink></button>
-        <h1>Gruppe beitreten</h1>
-        <form>
-            <input type="text" name="autoname" placeholder="Auto Name" />
-            <input type="text" name="autokennzeichen" placeholder="Autokennzeichen" />
-        </form>
-        <button><router-link to="/home">los geht's!</router-link></button>
-       <p>Carma</p>
-    </main>
+  <button><RouterLink to="/register">back</RouterLink></button>
+  <h1>Gruppe beitreten</h1>
+  <form>
+    <input type="text" name="autoname" placeholder="Autoname" required />
+    <input type="text" name="autokennzeichen" placeholder="Autokennzeichen" required />
+  </form>
+  <button><router-link to="/home">los geht's!</router-link></button>
 </template>
 
 <script>
-    export default {
-        
-    }
+export default {}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
