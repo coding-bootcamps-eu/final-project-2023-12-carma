@@ -1,35 +1,91 @@
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+*,
+*::before,
+*::after {
+  font-family: 'Raleway', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+:root {
+  background-color: var(--rosa);
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.app-container {
+  /* mobile first data 320-400/500px, margin auto */
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+h1 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--orange);
+}
+/* PascalCase */
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+h2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--orange);
+  text-transform: uppercase;
+}
+
+.carma-logo {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: var(--blue);
+  font-weight: bold;
+  font-style: normal;
+}
+
+.running-text-medium {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  color: var(--orange);
+  font-weight: medium;
+  font-style: normal;
+}
+
+.running-text-bold {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  color: var(--orange);
+  font-weight: bold;
+  font-style: normal;
+}
+
+.running-text-italic {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  color: var(--orange);
+  font-weight: medium;
+  font-style: italic;
+}
+
+/* PRE PART /*
+/* btn-pre-small-short (siehe figma) */
+.btn-pre-small-short {
+}
+
+/* btn-pre-small-long (siehe figma) */
+.btn-pre-small-long {
+}
+
+/* btn-pre-small-long (siehe figma) */
+.btn-pre-large {
+}
+
+/* input-pre (siehe figma) */
+.input-pre {
+}
+
+/* MAIN PART /*
+/* btn-main-short (siehe figma) */
+.btn-main-short {
+}
+
+/* btn-main-long (siehe figma) */
+.btn-main-long {
 }
