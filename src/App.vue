@@ -4,15 +4,12 @@ export default {}
 
 <template>
   <main>
-    <div class="app-container">
-      <RouterView />
-    </div>
+    <body>
+      <div class="app-container">
+        <RouterView />
+      </div>
+    </body>
   </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-</style>
+<style scoped></style>
