@@ -2,7 +2,9 @@
   <main>
     <div>Platzhalter Menü</div>
     <div>Platzhalter Icon Name</div>
-    <h2>Hi Maria!</h2>
+    <div v-for="user in userStore.users" :key="user.id">
+      <h2 v-if="user.isLoggedIn">Hi {{ user.firstName }}!</h2>
+    </div>
     <!--das muss dann mit {{ firstname }} dynamisiert werden-->
     <p>Dein Fahrt startet:</p>
     <p>Heute!</p>
@@ -20,7 +22,17 @@
 </template>
 
 <script>
-export default {}
+import { useUserStore } from '@/stores/user'
+
+export default {
+  setup() {
+    const userStore = useUserStore()
+
+    return {
+      userStore
+    }
+  }
+}
 </script>
 <!--Nach dem Login sollten wir wissen, welcher User angemeldet ist 
   und so auf die weiteren Daten zugreifen. Wie das genau funktioniert, 
