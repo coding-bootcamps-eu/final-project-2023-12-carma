@@ -8,6 +8,14 @@
   margin: 0;
 }
 
+:root {
+  background-color: var(--rosa);
+}
+
+.app-container {
+  /* mobile first data 320-400/500px, margin auto */
+}
+
 h1 {
   font-family: 'Raleway', sans-serif;
   font-size: 36px;
@@ -39,7 +47,6 @@ h2 {
   font-weight: medium;
   font-style: normal;
 }
-/* PascalCase */
 
 .running-text-bold {
   font-family: 'Raleway', sans-serif;
@@ -48,7 +55,6 @@ h2 {
   font-weight: bold;
   font-style: normal;
 }
-/* PascalCase */
 
 .running-text-italic {
   font-family: 'Raleway', sans-serif;
@@ -57,7 +63,6 @@ h2 {
   font-weight: medium;
   font-style: italic;
 }
-/* PascalCase */
 
 /* PRE PART /*
 /* btn-pre-small-short (siehe figma) */
@@ -74,4 +79,13 @@ h2 {
 
 /* input-pre (siehe figma) */
 .input-pre {
+}
+
+/* MAIN PART /*
+/* btn-main-short (siehe figma) */
+.btn-main-short {
+}
+
+/* btn-main-long (siehe figma) */
+.btn-main-long {
 }
