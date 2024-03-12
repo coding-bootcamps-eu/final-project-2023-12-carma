@@ -8,12 +8,12 @@
   margin: 0;
 }
 
-:root {
-  background-color: var(--rosa);
-}
-
+/* mobile first */
 .app-container {
-  /* mobile first data 320-400/500px, margin auto */
+  width: 428px;
+  height: 100vh;
+  margin: auto;
+  background-color: var(--rosa);
 }
 
 h1 {
@@ -38,6 +38,41 @@ h2 {
   color: var(--blue);
   font-weight: bold;
   font-style: normal;
+
+  position: relative;
+  display: inline-block;
+}
+.carma-logo::after {
+  content: '';
+  display: block;
+  width: calc(100% - 10px);
+  width: 53px; /* Breite der Linie */
+  height: 2px; /* Höhe der Linie */
+  background-color: var(--blue);
+  position: absolute;
+  bottom: -5px; /* Positionierung von unten */
+  left: 50%; /* Positionierung von links */
+  transform: translateX(-50%);
+}
+
+.bg-pre-bus-large {
+  background-image: url('./public/BG_bus_gross.png');
+  background-color: var(--rosa);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 428px;
+  height: 926px;
+}
+
+.bg-pre-bus-small {
+  background-image: url('./public/BG_bus_klein.png');
+  background-color: var(--rosa);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 428px;
+  height: 926px;
 }
 
 .running-text-medium {
@@ -64,28 +99,58 @@ h2 {
   font-style: italic;
 }
 
+/* Setzen Sie alle relevanten Eigenschaften auf 'unset' */
+button {
+  all: unset;
+  text-decoration: none;
+}
+
+/* Button-Verlikung Unterstrich entfernen */
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+input {
+  all: unset;
+  text-decoration: none;
+}
+
 /* PRE PART /*
-/* btn-pre-small-short (siehe figma) */
-.btn-pre-small-short {
+/* (siehe figma) */
+.btn-pre-small {
+  background-color: var(--beige-light);
+  border-radius: 0.4rem;
+  padding: 1rem 2rem;
+
+  color: var(--orange);
+  font-size: 20px;
+  font-weight: bold;
 }
 
-/* btn-pre-small-long (siehe figma) */
-.btn-pre-small-long {
-}
-
-/* btn-pre-small-long (siehe figma) */
+/* (siehe figma) */
 .btn-pre-large {
 }
 
-/* input-pre (siehe figma) */
+/* (siehe figma) */
 .input-pre {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  width: 22.25rem;
+
+  color: var(--orange);
+  font-size: 15px;
+  font-weight: light;
+  font-style: italic;
 }
 
 /* MAIN PART /*
-/* btn-main-short (siehe figma) */
+/* (siehe figma) */
 .btn-main-short {
 }
 
-/* btn-main-long (siehe figma) */
+/* (siehe figma) */
 .btn-main-long {
 }
