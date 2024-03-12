@@ -1,3 +1,4 @@
+<!-- an Figma angepasst cm -->
 <template>
   <div>
     <!-- Überschrift -->
@@ -65,7 +66,7 @@
   </div>
   <div>
     <!-- Evt. Button zum Abbrechen einfügen? + Submit -Button um die Fahrt zu erstellen-->
-    <button>ABBRECHEN</button><button type="submit">FAHRT ERSTELLEN</button>
+    <button>ABBRECHEN</button><button type="submit">FERTIG</button>
   </div>
 </template>
 
