@@ -3,18 +3,41 @@
 <template>
   <button><RouterLink to="/"></RouterLink></button>
   <h1>Willkommen zurück</h1>
-  <form>
-    <input type="email" name="email" placeholder="E-Mail Adresse" required />
+  <form @submit.prevent="login">
+    <input type="email" v-model="email" placeholder="E-Mail Adresse" required />
     <!--Frage: Brauchen wir ein Label oder "reicht" ein placeholder?-->
-    <input type="password" name="password" minlength="8" required placeholder="Passwort" />
+    <input type="password" v-model="password" minlength="2" required placeholder="Passwort" />
     <!--Frage: Brauchen wir ein Label oder "reicht" ein placeholder?-->
-    <button type="submit"><RouterLink to="/home">Log in</RouterLink></button>
+    <button type="submit">Log in</button
+    ><!--<RouterLink to="/home">Log in</RouterLink>-->
   </form>
 </template>
 
 <script>
-//Daten müssen auf Richtigkeit geprüft werden, sonst Fehlermeldung
-export default {}
+import { useUserStore } from '@/stores/user'
+
+export default {
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  setup() {
+    const userStore = useUserStore()
+
+    return {
+      userStore
+    }
+  },
+  methods: {
+    login() {
+      const userStore = useUserStore()
+      userStore.login(this.email, this.password)
+      this.$router.push('/home')
+    }
+  }
+}
 </script>
 
 <style scoped></style>

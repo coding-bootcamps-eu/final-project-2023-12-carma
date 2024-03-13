@@ -2,12 +2,14 @@
   <!--h1, menue, main, carma platzhalter entfernt, autoname und kilometerstand über den kalender gesetzt, carma-punkte weg cm-->
 
   <div>Platzhalter Icon Name</div>
-  <div v-for="user in usersStore.users" :key="user.id">
-    <h1 v-if="user.isLoggedIn">Hi {{ user.firstName }}!</h1>
+  <div>
+    <h1 v-if="user.isLoggedIn">Hi {{ user.loggedInUser.firstName }}!</h1>
   </div>
-  <!--das muss dann mit {{ firstname }} dynamisiert werden-->
-  <p>Dein Fahrt startet:</p>
-  <p>Heute!</p>
+
+  <p>Deine Fahrt startet:</p>
+  <div>
+    <p>{{}}</p>
+  </div>
   <p>Dein Auto: Berta</p>
   <!--dynamisch das Auto, dass dem Benutzer zugeordnet ist-->
   <p>Kilometerstand</p>
@@ -17,22 +19,26 @@
 </template>
 
 <script>
-import { useUsersStore } from '@/stores/users'
+import { useUserStore } from '@/stores/user'
 
 export default {
   setup() {
-    const usersStore = useUsersStore()
+    const user = useUserStore()
 
     return {
-      usersStore
+      user
     }
+  },
+  methods: {},
+  data() {
+    return {}
   }
 }
 </script>
+
 <!--Nach dem Login sollten wir wissen, welcher User angemeldet ist 
   und so auf die weiteren Daten zugreifen. Wie das genau funktioniert, 
-  weiß ich gerade leider nicht.  
--->
+  weiß ich gerade leider nicht. -->
 
 <style scoped></style>
 
@@ -41,4 +47,4 @@ Menü und Kalender Components einbauen
 Styling
 Username und Datum nächste Fahrt aus Datenbank fetchen
 Autoname, Kilometerstand und carma-Punktestand aus Datenbank fetchen
--->@/stores/users
+-->
