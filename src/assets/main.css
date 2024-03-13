@@ -1,11 +1,9 @@
 @import './base.css';
 
-*,
-*::before,
-*::after {
+:root {
   font-family: 'Raleway', sans-serif;
   box-sizing: border-box;
-  margin: 0;
+  color: var(--orange);
 }
 
 /* mobile first */
@@ -104,7 +102,6 @@ button {
   all: unset;
   text-decoration: none;
 }
-
 /* Button-Verlikung Unterstrich entfernen */
 a:link,
 a:visited {
@@ -121,15 +118,26 @@ input {
 .btn-pre-small {
   background-color: var(--beige-light);
   border-radius: 0.4rem;
-  padding: 1rem 2rem;
+  padding: 1rem;
+  width: 14.4rem;
+  text-align: center;
 
   color: var(--orange);
   font-size: 20px;
   font-weight: bold;
+  display: inline-block;
 }
 
 /* (siehe figma) */
 .btn-pre-large {
+  background-color: var(--beige-light);
+  border-radius: 0.4rem;
+  padding: 1rem 1rem;
+
+  color: var(--orange);
+  font-size: 36px;
+  font-weight: bold;
+  display: inline-block;
 }
 
 /* (siehe figma) */
@@ -144,13 +152,74 @@ input {
   font-size: 15px;
   font-weight: light;
   font-style: italic;
+  text-align: center;
 }
 
 /* MAIN PART /*
-/* (siehe figma) */
+
+
+/* Bsp. Einbindung 
+ <button class="btn-main-long">
+    FAHRT BEENDEN
+    <div class="btn-main-long-mini-bus"></div>
+  </button>
+  */
 .btn-main-short {
+  background-color: var(--green-dark);
+  border-radius: 0.4rem;
+  padding: 0.8rem;
+  width: 10rem;
+
+  color: var(--beige-light);
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+.btn-main-short-mini-bus {
+  background-image: url('./public/mini_bus_l.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 70px;
+  height: 39px;
+  position: absolute;
+  top: -37px;
 }
 
-/* (siehe figma) */
+/* mit mini bus */
 .btn-main-long {
+  background-color: var(--green-dark);
+  border-radius: 0.4rem;
+  padding: 0.8rem;
+  width: 22.25rem;
+
+  color: var(--beige-light);
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+.btn-main-long-mini-bus {
+  background-image: url('./public/mini_bus_l.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 70px;
+  height: 39px;
+  position: absolute;
+  top: -37px;
+}
+
+.ride-info-block {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  width: 22.25rem;
+  height: 22.5rem;
+  border-radius: 0.4rem;
+  font-size: 15px;
+  padding: 0.8rem;
+  margin: 0 auto;
 }
