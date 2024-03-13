@@ -22,7 +22,8 @@ h1 {
   font-weight: bold;
   color: var(--orange);
   text-align: center;
-  margin-top: 6rem;
+  margin-top: 3.5rem;
+  margin-bottom: 4rem;
 }
 /* PascalCase */
 
@@ -44,7 +45,13 @@ h2 {
   font-style: normal;
 
   position: relative;
+  bottom: 3.4rem;
   display: inline-block;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .carma-logo::after {
   content: '';
@@ -191,6 +198,10 @@ input {
   font-weight: light;
   font-style: italic;
   text-align: center;
+
+  display: inline-block;
+
+  margin-bottom: 1rem;
 }
 
 /* MAIN PART /*

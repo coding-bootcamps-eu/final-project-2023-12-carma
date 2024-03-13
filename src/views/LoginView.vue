@@ -1,16 +1,34 @@
-<!--button zurück angepasst, email statt benutzer:in, main, carma platzhalter entfernt, required zugefügt cm-->
-
 <template>
-  <button><RouterLink to="/"></RouterLink></button>
-  <h1>Willkommen zurück</h1>
-  <form @submit.prevent="login">
-    <input type="email" v-model="email" placeholder="E-Mail Adresse" required />
-    <!--Frage: Brauchen wir ein Label oder "reicht" ein placeholder?-->
-    <input type="password" v-model="password" minlength="2" required placeholder="Passwort" />
-    <!--Frage: Brauchen wir ein Label oder "reicht" ein placeholder?-->
-    <button type="submit">Log in</button
-    ><!--<RouterLink to="/home">Log in</RouterLink>-->
-  </form>
+  <section>
+    <div class="bg-pre-bus-small">
+      <button>
+        <RouterLink to="/"><i class="fa-solid fa-circle-chevron-left"></i></RouterLink>
+      </button>
+      <h1>Willkommen zurück</h1>
+      <form @submit.prevent="login">
+        <div class="input-container">
+          <input
+            type="email"
+            v-model="email"
+            placeholder="E-Mail Adresse"
+            required
+            class="input-pre"
+          />
+          <input
+            type="password"
+            v-model="password"
+            minlength="2"
+            required
+            placeholder="Passwort"
+            class="input-pre"
+          />
+          <div class="btn-container">
+            <button type="submit" class="btn-pre-large">log in</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -40,11 +58,32 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.input-container {
+  display: flex;
+  flex-direction: column;
 
-<!--Next Steps:
-Einbinden Hintergrund Bild
-Custom Styles (Schrift, Farben, Buttons)
-Ausprobieren, ob die Links richtig funktionieren
-Wie kommen die Daten in die Datenbank? (siehe "action" und "method" Attribut von html input tags)
--->
+  align-items: center;
+  height: 44rem;
+
+  position: relative;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+
+  position: absolute;
+  bottom: 0;
+}
+
+.fa-solid {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: var(--orange);
+}
+</style>
