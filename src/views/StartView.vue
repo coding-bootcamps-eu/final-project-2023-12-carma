@@ -30,7 +30,6 @@ export default {}
   width: 60px;
   height: 60px;
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
   position: absolute;
   top: 165px;
