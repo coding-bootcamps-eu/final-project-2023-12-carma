@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      isNavOpen: true
+      isNavOpen: false
     }
   }
 }
@@ -36,6 +36,9 @@ export default {
     <div>
       <RouterView />
     </div>
+    <footer>
+      <p class="carma-logo">carma</p>
+    </footer>
   </body>
 </template>
 
