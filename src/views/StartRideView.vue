@@ -13,7 +13,7 @@
   <!--Als Block dargestellte Infos über das Event, Start und Ende, wer sind 
       die MitfahrerInnen(in der Darstellung als MitfahrerInnen-Icon) und evt
     ein Kommentar zur Fahrt als eventNote-->
-  <div>
+  <div class="ride-info-block">
     <p>Von</p>
     <p>{{ eventStart }}</p>
     <p>Bis</p>
@@ -22,8 +22,11 @@
     <p>{{ eventParticipants }}</p>
     <p>{{ eventNote }}</p>
   </div>
-  <!--Evt einen ABBRECHEN-Button hinzufügen?-->
-  <div><button>ABBRECHEN</button><button>FAHRT BEENDEN</button></div>
+
+  <button class="btn-main-long">
+    FAHRT BEENDEN
+    <div class="btn-main-long-mini-bus"></div>
+  </button>
 </template>
 
 <script>

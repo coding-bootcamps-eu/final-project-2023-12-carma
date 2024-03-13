@@ -1,5 +1,5 @@
 <template>
-  <div class="btn-pre-small">
+  <div class="bg-pre-bus-large">
     <div>
       <h1>Ready for carma?</h1>
       <h2>ONE - TWO - YOU</h2>
@@ -8,9 +8,9 @@
       <!--<img src="kreis.png" alt="Kreis orang" class="kreis-orang" />-->
     </div>
     <button>
-      <router-link to="/register" class="btn-pre-small-short">neu bei carma?</router-link>
+      <router-link to="/register" class="btn-pre-small">neu bei carma?</router-link>
     </button>
-    <button><router-link to="/login" class="btn-pre-small-short">log in</router-link></button>
+    <button><router-link to="/login" class="btn-pre-small">log in</router-link></button>
   </div>
 </template>
 
