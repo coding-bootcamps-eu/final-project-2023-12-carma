@@ -1,6 +1,4 @@
 <template>
-  <!--h1, menue, main, carma platzhalter entfernt, autoname und kilometerstand über den kalender gesetzt, carma-punkte weg cm-->
-
   <div>Platzhalter Icon Name</div>
   <div>
     <h1 v-if="user.isLoggedIn">Hi {{ user.loggedInUser.firstName }}!</h1>
@@ -10,8 +8,10 @@
   <div>
     <p>{{}}</p>
   </div>
+  <i class="fa-solid fa-car"></i>
   <p>Dein Auto: Berta</p>
   <!--dynamisch das Auto, dass dem Benutzer zugeordnet ist-->
+  <i class="fa-solid fa-gauge-simple-high"></i>
   <p>Kilometerstand</p>
   <!--aktuell aus Datenbank des jeweilige Autos-->
   <!-- hier das Datum {{ eventStart }} der jeweils nächsten Fahrt des Users-->

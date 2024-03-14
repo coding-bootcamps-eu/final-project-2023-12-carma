@@ -241,6 +241,6 @@ select {
   width: 100%;
 
   position: absolute;
-  bottom: 5rem;
+  bottom: 6rem;
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <!-- Einbetten in eine submit-form-->
-    <form @submit.prevent="submitForm">
+  <!-- Einbetten in eine submit-form-->
+  <form @submit.prevent="submitForm">
+    <div class="app-container-small">
       <!--Dynamisches Ändern der Überschrift-->
-      <h1>{{ eventDescription }}</h1>
+      <h1 class="h1-event">{{ eventDescription }}</h1>
       <input type="text" minlength="1" maxlength="18" v-model="eventDescription" />
 
       <!--Dynamische Auswahl des Fahrt-Typs-->
@@ -41,12 +41,15 @@
       <!--Im unteren options-Bereich müssen noch Funktionen eingebaut werden, was genau
       mit den eingebenen Daten passieren soll -> POST an pinia, bzw die DB oder routelink 
       zurück bei abbrechen-->
-      <div>
-        <button @click="cancel">ABBRECHEN</button>
-        <button type="submit">FERTIG</button>
-      </div>
-    </form>
-  </div>
+    </div>
+    <div class="btn-container">
+      <button class="btn-main-short">ABBRECHEN</button
+      ><button class="btn-main-short" type="submit">
+        FERTIG
+        <div class="btn-main-short-mini-bus"></div>
+      </button>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -74,4 +77,19 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  position: absolute;
+  bottom: 6rem;
+}
+
+.h1-event {
+  font-style: italic;
+}
+</style>
