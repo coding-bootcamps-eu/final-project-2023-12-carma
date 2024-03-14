@@ -1,29 +1,26 @@
 <template>
-    <section>
-      <div class="bg-pre-bus-small">
+  <section>
+    <div class="bg-pre-bus-small">
+      <!--wo soll man durch den zurück-Button hinkommen? Auf home, oder? cm -->
+      <button>
+        <RouterLink to="/home"><i class="fa-solid fa-circle-chevron-left"></i></RouterLink>
+      </button>
+      <!---carma-h1 sollte "carma" blau färben-->
+      <h1 class="home-h1">Willkommen bei <span class="carma-h1">carma</span>!</h1>
+      <form>
         <button>
-          <RouterLink to="/"><i class="fa-solid fa-circle-chevron-left"></i></RouterLink>
+          <router-link to="/register/car" class="btn-pre-small">Auto-Gruppe erstellen</router-link>
         </button>
-        <button><RouterLink to="/register">back</RouterLink></button>
-        <h1>Stell dein Auto vor!</h1>
-        <form>
-          <input type="text" name="autoname" placeholder="Gib deinem Auto einen Namen" required />
-          <input
-            type="text"
-            name="autokennzeichen"
-            placeholder="Autokennzeichen"
-            maxlength="11"
-            required
-          />
-          <input type="number" name="tachostand" placeholder="Aktueller Tachostand" required />
-        </form>
-        <button><router-link to="/home">los geht's!</router-link></button>
-      </div>
-    </section>
-  </template>
-  
-  <script>
-  export default {}
-  </script>
-  
-  <style scoped></style>
+        <button>
+          <router-link to="/join" class="btn-pre-small">Auto-Gruppe beitreten</router-link>
+        </button>
+      </form>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style scoped></style>
