@@ -47,7 +47,7 @@ export default {
     <footer>
       <p
         class="carma-logo"
-        :class="{ blue: $route.meta.hasBlueLogo, rosa: !$route.meta.hasBlueLogo }"
+        :class="{ rosa: !$route.meta.hasBlueLogo, blue: $route.meta.hasBlueLogo }"
       >
         carma
       </p>
@@ -144,6 +144,9 @@ export default {
 
 .blue {
   color: var(--blue);
+  position: absolute;
+  left: 12.2rem;
+  bottom: 0.6rem;
 }
 .blue::after {
   content: '';

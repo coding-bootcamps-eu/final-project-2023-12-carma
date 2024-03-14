@@ -16,6 +16,11 @@
   background-color: var(--rosa);
 }
 
+.app-container-small {
+  width: 23rem;
+  margin: auto;
+}
+
 h1 {
   font-family: 'Raleway', sans-serif;
   font-size: 36px;
@@ -24,6 +29,17 @@ h1 {
   text-align: center;
   margin-top: 3.5rem;
   margin-bottom: 4rem;
+}
+
+.h1-event {
+  font-family: 'Raleway', sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--orange);
+  text-align: left;
+  margin-top: 3.5rem;
+  margin-bottom: 4rem;
+  max-width: 28rem;
 }
 /* PascalCase */
 
@@ -259,7 +275,17 @@ input {
   text-align: center;
   position: relative;
   display: inline-block;
+
+  transition:
+    background-color 0.5s ease,
+    transform 0.5s ease;
 }
+
+.btn-main-long:hover {
+  background-color: var(--blue);
+  transform: scale(1.05);
+}
+
 .btn-main-long-mini-bus {
   background-image: url('/mini_bus_l.png');
   background-size: cover;
@@ -280,6 +306,8 @@ input {
   font-size: 15px;
   padding: 0.8rem;
   margin: 0 auto;
+
+  display: inline-block;
 }
 
 .input-main {
