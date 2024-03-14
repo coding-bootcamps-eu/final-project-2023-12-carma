@@ -2,20 +2,84 @@
 <template>
   <button><RouterLink to="/register">back</RouterLink></button>
   <h1>Gruppe beitreten</h1>
-  <form>
+  <form @submit.prevent="joinCar">
     <input
       type="text"
-      name="autokennzeichen"
+      v-model="licensePlate"
       placeholder="Autokennzeichen"
       required
       class="input-pre"
     />
+    <button type="submit" class="btn-pre-large">los geht's!</button>
   </form>
-  <button><router-link to="/home" class="btn-pre-large">los geht's!</router-link></button>
 </template>
 
 <script>
-export default {}
+import { useUserStore } from '@/stores/user'
+
+export default {
+  data() {
+    return {
+      licensePlate: '',
+      participants: []
+    }
+  },
+  setup() {
+    const user = useUserStore()
+
+    return {
+      user
+    }
+  },
+  methods: {
+    joinCar() {
+      fetch('http://localhost:4000/cars')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok')
+          }
+          return response.json()
+        })
+        .then((data) => {
+          const foundCar = data.find((car) => car.licensePlate === this.licensePlate)
+          const foundCarId = foundCar.id
+          this.participants = foundCar.participants
+          if (foundCar) {
+            const user = useUserStore()
+            this.participants.push(user.loggedInUser.id)
+            console.log(this.participants[0])
+            console.log(foundCarId)
+            fetch(`http://localhost:4000/cars/${foundCarId}`, {
+              method: 'PATCH',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                participants: this.participants
+              })
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error('Failed to update car participants')
+                }
+                return response.json()
+              })
+              .then((updatedCar) => {
+                console.log('Car participants updated:', updatedCar)
+              })
+              .catch((error) => {
+                console.error('Error updating car participants:', error)
+              })
+          } else {
+            throw new Error('Dieses Auto gibt es anscheinend nicht')
+          }
+        })
+        .catch((error) => {
+          console.error('Es gab ein Problem mit der Autosuche:', error)
+        })
+    }
+  }
+}
 </script>
 
 <style scoped></style>
