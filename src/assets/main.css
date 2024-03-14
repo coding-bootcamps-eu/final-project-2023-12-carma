@@ -160,7 +160,7 @@ input {
 }
 
 .btn-pre-small:hover {
-  background-color: var(--beige-dark);
+  background-color: var(--blue);
   transform: scale(1.05);
 }
 
@@ -181,7 +181,7 @@ input {
 }
 
 .btn-pre-large:hover {
-  background-color: var(--beige-dark);
+  background-color: var(--blue);
   transform: scale(1.05);
 }
 
@@ -216,7 +216,8 @@ input {
   background-color: var(--green-dark);
   border-radius: 0.4rem;
   padding: 0.8rem;
-  width: 10rem;
+  width: 7rem;
+  margin: auto;
 
   color: var(--beige-light);
   font-size: 15px;
@@ -224,6 +225,10 @@ input {
   text-align: center;
   position: relative;
   display: inline-block;
+
+  transition:
+    background-color 0.5s ease,
+    transform 0.5s ease;
 }
 .btn-main-short-mini-bus {
   background-image: url('./public/mini_bus_l.png');
@@ -234,6 +239,11 @@ input {
   height: 39px;
   position: absolute;
   top: -37px;
+}
+
+.btn-main-short:hover {
+  background-color: var(--blue);
+  transform: scale(1.05);
 }
 
 /* mit mini bus */
@@ -270,4 +280,22 @@ input {
   font-size: 15px;
   padding: 0.8rem;
   margin: 0 auto;
+}
+
+.input-main {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  width: 22.25rem;
+
+  color: var(--orange);
+  font-size: 15px;
+  font-weight: light;
+  font-style: italic;
+  text-align: left;
+
+  display: inline-block;
+
+  margin-bottom: 1rem;
 }
