@@ -1,5 +1,6 @@
 <template>
   <div class="icon">M</div>
+  <!--muss dynamisiert werden mit API-Anbindung-->
 </template>
 
 <script>
@@ -24,7 +25,9 @@ export default {
   border-radius: 50%;
   color: var(--beige-light);
   text-align: center;
-  right: 20px;
-  padding: 5px;
+  line-height: 30px;
+  right: 10px;
+  padding: 3px;
+  margin-top: 15px;
 }
 </style>

@@ -15,17 +15,20 @@ export default {
 <template>
   <body class="app-container">
     <header>
-      <UserIcon></UserIcon>
+      <UserIcon v-if="$route.meta.hasUserIcon"></UserIcon>
       <nav v-if="$route.meta.hasMainMenu">
         <div class="navbar">
           <div @click="isNavOpen = !isNavOpen" class="container nav-container">
             <div class="hamburger-lines">
-              <span class="line"></span>
-              <span class="line"></span>
-              <span class="line"></span>
+              <span class="line" :class="{ line1: isNavOpen }"></span>
+              <span class="line" :class="{ line2: isNavOpen }"></span>
+              <span class="line" :class="{ line3: isNavOpen }"></span>
             </div>
 
-            <div class="menu-items" :class="{ open: isNavOpen, closed: !isNavOpen }">
+            <div
+              class="menu-items"
+              :class="{ open: isNavOpen, transform: isNavOpen, closed: !isNavOpen }"
+            >
               <li><router-link to="/home">HOME</router-link></li>
               <li><router-link to="/calendar">FAHRT BUCHEN</router-link></li>
               <li><router-link to="/about">ABOUT</router-link></li>
@@ -77,8 +80,8 @@ export default {
   height: 26px;
   width: 32px;
   position: absolute;
-  top: 17px;
-  right: 20px;
+  top: 20px;
+  right: 65px;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -94,11 +97,11 @@ export default {
 }
 
 .navbar .menu-items {
-  height: 50%;
+  height: 40%;
   position: fixed;
   z-index: 1;
-  top: 0;
-  right: 500px;
+  top: 13px;
+  right: 589px;
   background-color: var(--beige-light);
   overflow-x: hidden;
   padding-top: 60px;
@@ -120,6 +123,25 @@ export default {
   display: block;
   transition: 0.3s;
 }
+.transform {
+  transform: translateX(0);
+}
+
+.line1 {
+  transform: rotate(45deg);
+  transform-origin: 0% 0%;
+  transition: transform 0.4s ease-in-out;
+}
+.line2 {
+  transform: scaleY(0);
+  transition: transform 0.2s ease-in-out;
+}
+.line3 {
+  transform: rotate(-45deg);
+  transform-origin: 0% 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
 .blue {
   color: var(--blue);
 }

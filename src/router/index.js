@@ -27,7 +27,8 @@ const router = createRouter({
       component: StartView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: false
+        hasBlueLogo: false,
+        hasUserIcon: false
       }
     },
     {
@@ -36,7 +37,8 @@ const router = createRouter({
       component: LoginView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: false
+        hasBlueLogo: false,
+        hasUserIcon: false
       }
     },
     {
@@ -45,7 +47,8 @@ const router = createRouter({
       component: RegUserView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: false
+        hasBlueLogo: false,
+        hasUserIcon: false
       }
     },
     {
@@ -54,7 +57,8 @@ const router = createRouter({
       component: RegCarView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: false
+        hasBlueLogo: false,
+        hasUserIcon: false
       }
     },
     {
@@ -63,7 +67,8 @@ const router = createRouter({
       component: JoinView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: false
+        hasBlueLogo: false,
+        hasUserIcon: false
       }
     },
     {
@@ -72,7 +77,8 @@ const router = createRouter({
       component: HomeView,
       meta: {
         hasMainMenu: true,
-        hasBlueLogo: true
+        hasBlueLogo: true,
+        hasUserIcon: true
       }
     },
     {
@@ -81,7 +87,8 @@ const router = createRouter({
       component: NewRideView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: true
+        hasBlueLogo: true,
+        hasUserIcon: true
       }
     },
     {
@@ -90,7 +97,8 @@ const router = createRouter({
       component: StartRideView,
       meta: {
         hasMainMenu: true,
-        hasBlueLogo: true
+        hasBlueLogo: true,
+        hasUserIcon: true
       }
     },
     {
@@ -99,7 +107,8 @@ const router = createRouter({
       component: EditRideView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: true
+        hasBlueLogo: true,
+        hasUserIcon: true
       }
     },
     {
@@ -108,7 +117,8 @@ const router = createRouter({
       component: CalendarView,
       meta: {
         hasMainMenu: true,
-        hasBlueLogo: true
+        hasBlueLogo: true,
+        hasUserIcon: true
       }
     },
     {
@@ -117,7 +127,8 @@ const router = createRouter({
       component: NotesView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: true
+        hasBlueLogo: true,
+        hasUserIcon: true
       }
     },
     {
@@ -126,7 +137,8 @@ const router = createRouter({
       component: AboutView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: true
+        hasBlueLogo: true,
+        hasUserIcon: true
       }
     },
     {
@@ -135,7 +147,8 @@ const router = createRouter({
       component: LegalView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: true
+        hasBlueLogo: true,
+        hasUserIcon: true
       }
     },
     {
@@ -144,7 +157,8 @@ const router = createRouter({
       component: CiaoView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: true
+        hasBlueLogo: false,
+        hasUserIcon: false
       }
     },
     {
@@ -153,7 +167,8 @@ const router = createRouter({
       component: LogbookView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: true
+        hasBlueLogo: true,
+        hasUserIcon: true
       }
     },
     {
@@ -162,7 +177,8 @@ const router = createRouter({
       component: MapView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: true
+        hasBlueLogo: true,
+        hasUserIcon: true
       }
     },
     {
@@ -171,7 +187,8 @@ const router = createRouter({
       component: CarmaPointsView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: true
+        hasBlueLogo: true,
+        hasUserIcon: true
       }
     },
     {
@@ -180,7 +197,8 @@ const router = createRouter({
       component: AfterRegView,
       meta: {
         hasMainMenu: false,
-        hasBlueLogo: false
+        hasBlueLogo: false,
+        hasUserIcon: false
       }
     }
   ]
