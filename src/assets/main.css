@@ -67,7 +67,7 @@ h2 {
 }
 
 .bg-pre-bus-large {
-  background-image: url('./public/BG_bus_gross.png');
+  background-image: url('/BG_bus_gross.png');
   background-color: var(--rosa);
   background-size: cover;
   background-position: center;
@@ -78,7 +78,7 @@ h2 {
 }
 
 .bg-pre-bus-small {
-  background-image: url('./public/BG_bus_klein.png');
+  background-image: url('/BG_bus_klein.png');
   background-color: var(--rosa);
   background-size: cover;
   background-position: center;
@@ -89,7 +89,7 @@ h2 {
 }
 
 .bg-pre-bus-small-night {
-  background-image: url('./public/BG_bus_klein_night.png');
+  background-image: url('/BG_bus_klein_night.png');
   background-color: var(--rosa);
   background-size: cover;
   background-position: center;
@@ -197,7 +197,7 @@ input {
   font-size: 15px;
   font-weight: light;
   font-style: italic;
-  text-align: center;
+  text-align: left;
 
   display: inline-block;
 
@@ -231,7 +231,7 @@ input {
     transform 0.5s ease;
 }
 .btn-main-short-mini-bus {
-  background-image: url('./public/mini_bus_l.png');
+  background-image: url('/mini_bus_l.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -261,7 +261,7 @@ input {
   display: inline-block;
 }
 .btn-main-long-mini-bus {
-  background-image: url('./public/mini_bus_l.png');
+  background-image: url('/mini_bus_l.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

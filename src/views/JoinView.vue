@@ -1,17 +1,26 @@
-<!--Menü-Platzhalter, main, carma entfernt, required zugefügt cm-->
 <template>
-  <button><RouterLink to="/register">back</RouterLink></button>
-  <h1>Gruppe beitreten</h1>
-  <form @submit.prevent="joinCar">
-    <input
-      type="text"
-      v-model="licensePlate"
-      placeholder="Autokennzeichen"
-      required
-      class="input-pre"
-    />
-    <button type="submit" class="btn-pre-large">los geht's!</button>
-  </form>
+  <section>
+    <div class="bg-pre-bus-small">
+      <button>
+        <RouterLink to="/"><i class="fa-solid fa-circle-chevron-left"></i></RouterLink>
+      </button>
+      <h1>Gruppe beitreten</h1>
+      <form @submit.prevent="joinCar">
+        <div class="input-container">
+          <input
+            type="text"
+            v-model="licensePlate"
+            placeholder="Autokennzeichen"
+            required
+            class="input-pre"
+          />
+        </div>
+        <div class="btn-container">
+          <button type="submit" class="btn-pre-large">los geht's!</button>
+        </div>
+      </form>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -82,4 +91,32 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.fa-solid {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: var(--orange);
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  height: 44rem;
+
+  position: relative;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  position: absolute;
+  bottom: 5.8rem;
+}
+</style>
