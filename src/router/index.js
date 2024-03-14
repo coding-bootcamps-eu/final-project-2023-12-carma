@@ -26,7 +26,8 @@ const router = createRouter({
       name: 'start',
       component: StartView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: false
       }
     },
     {
@@ -34,7 +35,8 @@ const router = createRouter({
       name: 'login',
       component: LoginView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: false
       }
     },
     {
@@ -42,7 +44,8 @@ const router = createRouter({
       name: 'register',
       component: RegUserView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: false
       }
     },
     {
@@ -50,7 +53,8 @@ const router = createRouter({
       name: 'register-car',
       component: RegCarView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: false
       }
     },
     {
@@ -58,7 +62,8 @@ const router = createRouter({
       name: 'join',
       component: JoinView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: false
       }
     },
     {
@@ -66,7 +71,8 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
-        hasMainMenu: true
+        hasMainMenu: true,
+        hasBlueLogo: true
       }
     },
     {
@@ -74,7 +80,8 @@ const router = createRouter({
       name: 'new-ride',
       component: NewRideView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: true
       }
     },
     {
@@ -82,7 +89,8 @@ const router = createRouter({
       name: 'start-ride',
       component: StartRideView,
       meta: {
-        hasMainMenu: true
+        hasMainMenu: true,
+        hasBlueLogo: true
       }
     },
     {
@@ -90,7 +98,8 @@ const router = createRouter({
       name: 'edit-ride',
       component: EditRideView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: true
       }
     },
     {
@@ -98,7 +107,8 @@ const router = createRouter({
       name: 'calendar',
       component: CalendarView,
       meta: {
-        hasMainMenu: true
+        hasMainMenu: true,
+        hasBlueLogo: true
       }
     },
     {
@@ -106,7 +116,8 @@ const router = createRouter({
       name: 'notes',
       component: NotesView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: true
       }
     },
     {
@@ -114,7 +125,8 @@ const router = createRouter({
       name: 'about',
       component: AboutView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: true
       }
     },
     {
@@ -122,7 +134,8 @@ const router = createRouter({
       name: 'legal',
       component: LegalView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: true
       }
     },
     {
@@ -130,7 +143,8 @@ const router = createRouter({
       name: 'ciao',
       component: CiaoView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: true
       }
     },
     {
@@ -138,7 +152,8 @@ const router = createRouter({
       name: 'logbook',
       component: LogbookView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: true
       }
     },
     {
@@ -146,7 +161,8 @@ const router = createRouter({
       name: 'map',
       component: MapView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: true
       }
     },
     {
@@ -154,7 +170,8 @@ const router = createRouter({
       name: 'carma-points',
       component: CarmaPointsView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: true
       }
     },
     {
@@ -162,7 +179,8 @@ const router = createRouter({
       name: 'registered',
       component: AfterRegView,
       meta: {
-        hasMainMenu: false
+        hasMainMenu: false,
+        hasBlueLogo: false
       }
     }
   ]

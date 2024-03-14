@@ -40,7 +40,7 @@ h2 {
 .carma-logo {
   font-family: 'Raleway', sans-serif;
   font-size: 14px;
-  color: var(--blue);
+  /*color: var(--blue); erzeugen wir dynamisch in der App.vue*/
   font-weight: bold;
   font-style: normal;
 
@@ -59,7 +59,7 @@ h2 {
   width: calc(100% - 10px);
   width: 53px; /* Breite der Linie */
   height: 2px; /* Höhe der Linie */
-  background-color: var(--blue);
+  /*background-color: var(--blue);*/
   position: absolute;
   bottom: -5px; /* Positionierung von unten */
   left: 50%; /* Positionierung von links */
