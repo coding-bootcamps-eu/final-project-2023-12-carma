@@ -74,10 +74,10 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 10rem;
+  width: 100%;
 
   position: absolute;
-  bottom: 0;
+  bottom: 3.5rem;
 }
 
 .fa-solid {

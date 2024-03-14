@@ -11,7 +11,7 @@
     bei hovern lösen -->
       <form method="post">
         <input
-          class="input-pre"
+          class="input-main"
           type="text"
           name="eventDescription"
           id="event-description"
@@ -79,21 +79,18 @@
         </textarea>
       </form>
     </div>
-    <div>
-      <!--Auswahl des EventType, später POST zur API, eventType -->
+    <div class="input-choose-container">
+      <!-- Auswahl des EventType, später POST zur API, eventType -->
       <form method="post">
-        <label
-          ><input class="input-date" type="radio" name="eventType" id="freie-fahrt" />Freie
-          Fahrt</label
-        >
-        <p>oder</p>
-        <label
-          ><input class="input-date" type="radio" name="eventType" id="muss-sein" />Muss sein</label
-        >
+        <label for="freie-fahrt">
+          <input class="input-choose" type="radio" name="eventType" id="freie-fahrt" />Freie Fahrt
+        </label>
+        <label for="muss-sein">
+          <input class="input-choose" type="radio" name="eventType" id="muss-sein" />Muss sein
+        </label>
       </form>
     </div>
-    <div>
-      <!-- Evt. Button zum Abbrechen einfügen? + Submit -Button um die Fahrt zu erstellen-->
+    <div class="btn-container">
       <button class="btn-main-short">ABBRECHEN</button
       ><button class="btn-main-short" type="submit">
         FERTIG
@@ -108,12 +105,37 @@ export default {}
 </script>
 
 <style scoped>
+.input-choose-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-choose {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 50%;
+  padding: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+
+  color: var(--orange);
+  font-size: 15px;
+  font-weight: light;
+  font-style: italic;
+  text-align: center;
+  margin-left: 2rem;
+  margin-right: 0.5rem;
+}
+
 .input-date {
   background-color: var(--beige-light);
   border: solid 0.1rem var(--orange);
   border-radius: 0.4rem;
   padding: 0.5rem;
-  width: 10.5rem;
+  width: 1.8rem;
+  height:;
 
   color: var(--orange);
   font-size: 15px;
@@ -134,13 +156,12 @@ export default {}
   font-style: italic;
 }
 
-.flex-container {
+/* .flex-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: space-evenly;
   align-items: center;
-}
+} */
 .align {
   text-align: left;
   margin-left: 2rem;
@@ -148,5 +169,16 @@ export default {}
 
 select {
   text-align: right;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  position: absolute;
+  bottom: 5rem;
 }
 </style>

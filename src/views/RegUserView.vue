@@ -2,45 +2,58 @@
 
 <template>
   <div class="bg-pre-bus-small">
-    <button><RouterLink to="/"></RouterLink></button>
+    <button>
+      <RouterLink to="/"><i class="fa-solid fa-circle-chevron-left"></i></RouterLink>
+    </button>
     <h1>Stell dich vor!</h1>
     <form @submit.prevent="regNewUser">
-      <input type="email" v-model="email" placeholder="E-Mail Adresse" required class="input-pre" />
-      <input
-        type="password"
-        v-model="password"
-        placeholder="Passwort"
-        minlength="5"
-        required
-        class="input-pre"
-      />
-      <input
-        type="password"
-        v-model="passwordConfirm"
-        placeholder="Passwort bestätigen"
-        required
-        class="input-pre"
-      />
-      <input
-        type="text"
-        v-model="firstName"
-        placeholder="Vorname"
-        maxlength="14"
-        style="text-transform: capitalize"
-        required
-        class="input-pre"
-      />
-      <input
-        type="text"
-        v-model="lastName"
-        placeholder="Nachname"
-        style="text-transform: capitalize"
-        required
-        class="input-pre"
-      /><button type="submit" class="btn-pre-small">Registrieren</button>
-      <!-- <button type="submit" name="weiter" @click="goToJoin" class="btn-pre-small">
+      <div class="input-container">
+        <input
+          type="email"
+          v-model="email"
+          placeholder="E-Mail Adresse"
+          required
+          class="input-pre"
+        />
+        <input
+          type="password"
+          v-model="password"
+          placeholder="Passwort"
+          minlength="5"
+          required
+          class="input-pre"
+        />
+        <input
+          type="password"
+          v-model="passwordConfirm"
+          placeholder="Passwort bestätigen"
+          required
+          class="input-pre"
+        />
+        <input
+          type="text"
+          v-model="firstName"
+          placeholder="Vorname"
+          maxlength="14"
+          style="text-transform: capitalize"
+          required
+          class="input-pre"
+        />
+        <input
+          type="text"
+          v-model="lastName"
+          placeholder="Nachname"
+          style="text-transform: capitalize"
+          required
+          class="input-pre"
+        />
+      </div>
+      <div class="btn-container">
+        <button type="submit" class="btn-pre-small">Registrieren</button>
+        <!-- <button type="submit" name="weiter" @click="goToJoin" class="btn-pre-small">
         Auto-Gruppe beitreten
       </button> -->
+      </div>
     </form>
     <div class="input-container"></div>
   </div>
@@ -96,4 +109,32 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.input-container {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  height: 44rem;
+
+  position: relative;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  position: absolute;
+  bottom: 3.5rem;
+}
+
+.fa-solid {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: var(--orange);
+}
+</style>
