@@ -50,9 +50,6 @@
       </div>
       <div class="btn-container">
         <button type="submit" class="btn-pre-small">Registrieren</button>
-        <!-- <button type="submit" name="weiter" @click="goToJoin" class="btn-pre-small">
-        Auto-Gruppe beitreten
-      </button> -->
       </div>
     </form>
     <div class="input-container"></div>
@@ -94,6 +91,7 @@ export default {
         })
         .then((responseData) => {
           console.log('Data posted successfully:', responseData)
+          this.$router.push('/registered')
         })
         .catch((error) => {
           console.error('Error posting data:', error)
