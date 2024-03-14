@@ -2,9 +2,9 @@
   <section>
     <div class="bg-pre-bus-small">
       <!--wo soll man durch den zurück-Button hinkommen? Auf home, oder? cm -->
-      <button>
+      <!--<button>
         <RouterLink to="/home"><i class="fa-solid fa-circle-chevron-left"></i></RouterLink>
-      </button>
+      </button>-->
       <!---carma-h1 sollte "carma" blau färben-->
       <h1 class="home-h1">Willkommen bei <span class="carma-h1">carma</span>!</h1>
       <form>
@@ -23,4 +23,8 @@
 export default {}
 </script>
 
-<style scoped></style>
+<style scoped>
+.carma-h1 {
+  color: var(--blue);
+}
+</style>
