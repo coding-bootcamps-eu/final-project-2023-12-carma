@@ -1,5 +1,5 @@
 <template>
-  <div class="icon">M</div>
+  <div class="icon">{{ user.loggedInUser.firstName[0] }}</div>
   <!--muss dynamisiert werden mit API-Anbindung-->
 </template>
 
@@ -7,10 +7,10 @@
 import { useUserStore } from '@/stores/user'
 export default {
   setup() {
-    const userStore = useUserStore()
+    const user = useUserStore()
 
     return {
-      userStore
+      user
     }
   }
 }
