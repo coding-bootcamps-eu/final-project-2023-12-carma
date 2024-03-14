@@ -16,6 +16,7 @@ import LogbookView from '@/views/LogbookView.vue'
 import CiaoView from '@/views/CiaoView.vue'
 import MapView from '@/views/MapView.vue'
 import CarmaPointsView from '@/views/CarmaPointsView.vue'
+import AfterRegView from '@/views/AfterRegView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -152,6 +153,14 @@ const router = createRouter({
       path: '/carma-points',
       name: 'carma-points',
       component: CarmaPointsView,
+      meta: {
+        hasMainMenu: false
+      }
+    },
+    {
+      path: '/registered',
+      name: 'registered',
+      component: AfterRegView,
       meta: {
         hasMainMenu: false
       }
