@@ -1,9 +1,13 @@
 <script>
+import UserIcon from './components/UserIcon.vue'
 export default {
   data() {
     return {
       isNavOpen: false
     }
+  },
+  components: {
+    UserIcon
   }
 }
 </script>
@@ -11,6 +15,7 @@ export default {
 <template>
   <body class="app-container">
     <header>
+      <UserIcon></UserIcon>
       <nav v-if="$route.meta.hasMainMenu">
         <div class="navbar">
           <div @click="isNavOpen = !isNavOpen" class="container nav-container">
@@ -37,7 +42,12 @@ export default {
       <RouterView />
     </div>
     <footer>
-      <p class="carma-logo">carma</p>
+      <p
+        class="carma-logo"
+        :class="{ blue: $route.meta.hasBlueLogo, rosa: !$route.meta.hasBlueLogo }"
+      >
+        carma
+      </p>
     </footer>
   </body>
 </template>
@@ -109,5 +119,36 @@ export default {
   color: #818181;
   display: block;
   transition: 0.3s;
+}
+.blue {
+  color: var(--blue);
+}
+.blue::after {
+  content: '';
+  display: block;
+  width: calc(100% - 10px);
+  width: 53px;
+  height: 2px;
+  background-color: var(--blue);
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.rosa {
+  color: var(--rosa);
+}
+.rosa::after {
+  content: '';
+  display: block;
+  width: calc(100% - 10px);
+  width: 53px;
+  height: 2px;
+  background-color: var(--rosa);
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 </style>
