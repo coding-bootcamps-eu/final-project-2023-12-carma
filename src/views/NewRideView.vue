@@ -5,103 +5,165 @@
     <h1 class="align">Deine <br />nächste Fahrt</h1>
   </div>
   <div class="flex-container">
-    <div>
-      <!-- Text-Input für die Event-Description, später POST zur API, evt noch einmal 
+    <form @submit.prevent="createNewRide">
+      <div>
+        <!-- Text-Input für die Event-Description, später POST zur API, evt noch einmal 
     auf die Darstellung der maxlength vom text-input schauen, z.B. mit popup 
     bei hovern lösen -->
-      <form method="post">
+
         <input
           class="input-main"
           type="text"
-          name="eventDescription"
+          v-model="eventDescription"
           id="event-description"
           placeholder="Name der Fahrt"
           minlength="1"
           maxlength="18"
         />
-      </form>
-    </div>
-    <div>
-      <!-- Datums-Input für das Event, Start und Ende, evt mit Datepicker und range, 
+      </div>
+      <div>
+        <!-- Datums-Input für das Event, Start und Ende, evt mit Datepicker und range, 
       später POST zur API, Format anpassen zur Darstellung in der Calendar-Component -->
-      <form method="post">
+
         <input
           class="input-date"
           type="datetime-local"
-          name="eventStart"
+          v-model="eventStart"
           id="event-start"
           placeholder="Von"
         />
         <input
           class="input-date"
           type="datetime-local"
-          name="eventEnd"
+          v-model="eventEnd"
           id="event-end"
           placeholder="Bis"
         />
-      </form>
-    </div>
-    <div>
-      <!-- MitfahrerInnen-Input für das Event, am besten dynamisch erzeugt 
+      </div>
+      <div>
+        <!-- MitfahrerInnen-Input für das Event, am besten dynamisch erzeugt 
         aus der Auto-Gruppe anhand der driver_id, mit Darstellung des Buchstaben-
         Icons, später POST zur API, if checked -> eventParticipants -->
-      <form class="input-pre" method="post">
-        <label for="event-participants">Mitfahrer*innen hinzufügen</label>
-        <select name="eventParticipants" id="event-participants">
-          <option value="MitfahrerInnen hinzufügen"></option>
-          <option value="driver_id = 1">
-            <input type="checkbox" name="eventParticipants" id="driver-1" />
-          </option>
-          <option value="driver_id = 2">
-            <input type="checkbox" name="eventParticipants" id="driver-2" />
-          </option>
-          <option value="driver_id = 3">
-            <input type="checkbox" name="eventParticipants" id="driver-3" />
-          </option>
-          <option value="driver_id = 4">
-            <input type="checkbox" name="eventParticipants" id="driver-4" />
-          </option>
-        </select>
-      </form>
-    </div>
-    <div>
-      <!--Möglichkeit einen Kommentar zur Fahrt zu hinterlassen, später POST 
+        <div class="input-pre" method="post">
+          <label for="event-participants">Mitfahrer*innen hinzufügen</label>
+          <select name="eventParticipants" id="event-participants">
+            <option value="MitfahrerInnen hinzufügen"></option>
+            <option value="driver_id = 1">
+              <input type="checkbox" name="eventParticipants" id="driver-1" />
+            </option>
+            <option value="driver_id = 2">
+              <input type="checkbox" name="eventParticipants" id="driver-2" />
+            </option>
+            <option value="driver_id = 3">
+              <input type="checkbox" name="eventParticipants" id="driver-3" />
+            </option>
+            <option value="driver_id = 4">
+              <input type="checkbox" name="eventParticipants" id="driver-4" />
+            </option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <!--Möglichkeit einen Kommentar zur Fahrt zu hinterlassen, später POST 
       zur API, eventNotes -->
-      <form method="post">
+
         <textarea
           class="comment-field"
           id="event-notes"
-          name="eventNotes"
+          v-model="eventNotes"
           rows="5"
           cols="33"
           placeholder="Kommentar"
         >
         </textarea>
-      </form>
-    </div>
-    <div class="input-choose-container">
-      <!-- Auswahl des EventType, später POST zur API, eventType -->
-      <form method="post">
+      </div>
+      <div class="input-choose-container">
+        <!-- Auswahl des EventType, später POST zur API, eventType -->
+
         <label for="freie-fahrt">
-          <input class="input-choose" type="radio" name="eventType" id="freie-fahrt" />Freie Fahrt
+          <input
+            class="input-choose"
+            type="radio"
+            v-model="eventType"
+            id="freie-fahrt"
+            value="freie-fahrt"
+          />Freie Fahrt
         </label>
         <label for="muss-sein">
-          <input class="input-choose" type="radio" name="eventType" id="muss-sein" />Muss sein
+          <input
+            class="input-choose"
+            type="radio"
+            v-model="eventType"
+            id="muss-sein"
+            value="muss-sein"
+          />Muss sein
         </label>
-      </form>
-    </div>
-    <div class="btn-container">
-      <button class="btn-main-short">ABBRECHEN</button
-      ><button class="btn-main-short" type="submit">
-        FERTIG
-        <div class="btn-main-short-mini-bus"></div>
-      </button>
-    </div>
+      </div>
+      <div class="btn-container">
+        <button class="btn-main-short">ABBRECHEN</button
+        ><button class="btn-main-short" type="submit">
+          FERTIG
+          <div class="btn-main-short-mini-bus"></div>
+        </button>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
-export default {}
+import { useUserStore } from '@/stores/user'
+
+export default {
+  data() {
+    return {
+      eventDescription: '',
+      eventStart: '',
+      eventEnd: '',
+      eventNotes: '',
+      eventType: '',
+      driverId: ''
+    }
+  },
+  setup() {
+    const user = useUserStore()
+
+    return {
+      user
+    }
+  },
+  methods: {
+    createNewRide() {
+      const newEvent = {
+        description: this.eventDescription,
+        start: this.eventStart,
+        end: this.eventEnd,
+        notes: this.eventNotes,
+        type: this.eventType,
+        driverId: this.user.loggedInUser.id
+      }
+      fetch('http://localhost:4000/events', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newEvent)
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok')
+          }
+          return response.json()
+        })
+        .then((responseData) => {
+          console.log('Data posted successfully:', responseData)
+        })
+        .catch((error) => {
+          console.error('Error posting data:', error)
+        })
+      return this.$router.push('/calendar')
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -135,7 +197,7 @@ export default {}
   border-radius: 0.4rem;
   padding: 0.5rem;
   width: 1.8rem;
-  height:;
+  height: 1.8rem;
 
   color: var(--orange);
   font-size: 15px;
