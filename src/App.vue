@@ -97,18 +97,18 @@ export default {
 }
 
 .navbar .menu-items {
-  height: 40%;
-  position: fixed;
+  height: 35%;
+  position: absolute;
   z-index: 1;
-  top: 13px;
-  right: 589px;
+  top: 0;
+  right: 0;
   background-color: var(--beige-light);
   overflow-x: hidden;
   padding-top: 60px;
   transition: 0.5s;
 }
 .open {
-  width: 300px;
+  width: 70%;
 }
 
 .closed {

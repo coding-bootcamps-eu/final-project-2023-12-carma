@@ -17,6 +17,7 @@ import CiaoView from '@/views/CiaoView.vue'
 import MapView from '@/views/MapView.vue'
 import CarmaPointsView from '@/views/CarmaPointsView.vue'
 import AfterRegView from '@/views/AfterRegView.vue'
+import { useUserStore } from '@/stores/user'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,7 +29,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: false,
-        hasUserIcon: false
+        hasUserIcon: false,
+        needsAuth: false
       }
     },
     {
@@ -38,7 +40,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: false,
-        hasUserIcon: false
+        hasUserIcon: false,
+        needsAuth: false
       }
     },
     {
@@ -48,7 +51,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: false,
-        hasUserIcon: false
+        hasUserIcon: false,
+        needsAuth: false
       }
     },
     {
@@ -58,7 +62,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: false,
-        hasUserIcon: false
+        hasUserIcon: false,
+        needsAuth: true
       }
     },
     {
@@ -68,7 +73,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: false,
-        hasUserIcon: false
+        hasUserIcon: false,
+        needsAuth: true
       }
     },
     {
@@ -78,7 +84,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: true,
         hasBlueLogo: true,
-        hasUserIcon: true
+        hasUserIcon: true,
+        needsAuth: true
       }
     },
     {
@@ -88,7 +95,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: true,
-        hasUserIcon: true
+        hasUserIcon: true,
+        needsAuth: true
       }
     },
     {
@@ -98,7 +106,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: true,
         hasBlueLogo: true,
-        hasUserIcon: true
+        hasUserIcon: true,
+        needsAuth: true
       }
     },
     {
@@ -108,7 +117,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: true,
-        hasUserIcon: true
+        hasUserIcon: true,
+        needsAuth: true
       }
     },
     {
@@ -118,7 +128,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: true,
         hasBlueLogo: true,
-        hasUserIcon: true
+        hasUserIcon: true,
+        needsAuth: true
       }
     },
     {
@@ -128,7 +139,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: true,
-        hasUserIcon: true
+        hasUserIcon: true,
+        needsAuth: true
       }
     },
     {
@@ -138,7 +150,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: true,
-        hasUserIcon: true
+        hasUserIcon: true,
+        needsAuth: true
       }
     },
     {
@@ -148,7 +161,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: true,
-        hasUserIcon: true
+        hasUserIcon: true,
+        needsAuth: true
       }
     },
     {
@@ -158,7 +172,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: false,
-        hasUserIcon: false
+        hasUserIcon: false,
+        needsAuth: false
       }
     },
     {
@@ -168,7 +183,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: true,
-        hasUserIcon: true
+        hasUserIcon: true,
+        needsAuth: true
       }
     },
     {
@@ -178,7 +194,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: true,
-        hasUserIcon: true
+        hasUserIcon: true,
+        needsAuth: true
       }
     },
     {
@@ -188,7 +205,8 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: true,
-        hasUserIcon: true
+        hasUserIcon: true,
+        needsAuth: true
       }
     },
     {
@@ -198,10 +216,20 @@ const router = createRouter({
       meta: {
         hasMainMenu: false,
         hasBlueLogo: false,
-        hasUserIcon: false
+        hasUserIcon: false,
+        needsAuth: true
       }
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  const userStore = useUserStore()
+
+  if (to.meta.needsAuth && userStore.loggedInUser == null) {
+    return next('/')
+  }
+  next()
 })
 
 export default router
