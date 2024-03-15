@@ -22,9 +22,21 @@
       <p>{{ eventParticipants }}</p>
       <p>{{ eventNote }}</p>
     </div>
+    <form v-if="isRideFinished" class="endride">
+      <div class="popup">
+        <p class="text1">Deine Fahrt ist zu Ende!</p>
+        <p class="text2">Bis zum nächsten Mal</p>
+        <br /><br />
+        <input class="input-main" type="text" placeholder="Aktueller Tachostand *" required />
+        <input class="input-main" type="text" placeholder="Hinterlasse eine Notiz" />
+        <div>
+          <button><i class="fa-regular fa-circle-check"></i></button>
+        </div>
+      </div>
+    </form>
   </div>
   <div class="btn-container">
-    <button class="btn-main-long">
+    <button @click="isRideFinished = true" class="btn-main-long">
       FAHRT BEENDEN
       <div class="btn-main-long-mini-bus"></div>
     </button>
@@ -46,7 +58,8 @@ export default {
         { id: 2, firstName: 'Doro' },
         { id: 3, firstName: 'Christoph' },
         { id: 4, firstName: 'Lorenz' }
-      ]
+      ],
+      isRideFinished: false
     }
   },
   methods: {
@@ -57,6 +70,9 @@ export default {
 </script>
 
 <style scoped>
+.app-container-small {
+  position: relative;
+}
 .btn-container {
   display: flex;
   flex-direction: row;
@@ -66,5 +82,44 @@ export default {
 
   position: absolute;
   bottom: 6rem;
+}
+
+.popup {
+  background-color: var(--green-dark);
+  text-align: center;
+  width: 25rem;
+  height: 20rem;
+  position: absolute;
+  left: 1rem;
+  top: 20rem;
+}
+.endride {
+  position: absolute; /* Sit on top of the page content */
+  /*display: none; /* Hidden by default */
+  width: 428px;
+  height: 926px;
+  margin: auto;
+  margin-top: 0.9rem;
+  top: -4.4rem;
+  left: -1.85rem;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+.text1 {
+  color: var(--beige-light);
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.text2 {
+  color: var(--beige-light);
+}
+
+.fa-regular {
+  color: var(--beige-light);
+  margin-top: 1.5rem;
 }
 </style>
