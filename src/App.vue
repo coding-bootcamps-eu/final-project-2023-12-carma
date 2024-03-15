@@ -29,11 +29,24 @@ export default {
               class="menu-items"
               :class="{ open: isNavOpen, transform: isNavOpen, closed: !isNavOpen }"
             >
-              <li><router-link to="/home">HOME</router-link></li>
-              <li><router-link to="/calendar">FAHRT BUCHEN</router-link></li>
-              <li><router-link to="/about">ABOUT</router-link></li>
-              <li><a href="#">placeholder</a></li>
-              <li><a href="#">placeholder</a></li>
+              <li><i class="fa-solid fa-house"></i> <router-link to="/home">Home</router-link></li>
+              <li>
+                <i class="fa-regular fa-calendar-days"></i>
+                <router-link to="/calendar">Fahrt buchen</router-link>
+              </li>
+              <li>
+                <i class="fa-solid fa-book-open"></i>
+                <router-link to="/logbook">Logbuch</router-link>
+              </li>
+              <li>
+                <i class="fa-regular fa-note-sticky"></i>
+                <router-link to="/notes">Notizen</router-link>
+              </li>
+              <li><i class="fa-regular fa-map"></i> <router-link to="/map">Karte</router-link></li>
+              <li>
+                <i class="fa-regular fa-address-card"></i
+                ><router-link to="/about">About</router-link>
+              </li>
             </div>
           </div>
         </div>
@@ -66,9 +79,9 @@ export default {
 .navbar .nav-container a {
   text-decoration: none;
   color: var(--orange);
-  font-weight: 500;
-  font-size: 1.2rem;
-  padding: 0.7rem;
+  font-size: 15px;
+  padding: 2rem;
+  line-height: 1.5rem;
 }
 
 .navbar .nav-container a:hover {
@@ -118,8 +131,7 @@ export default {
 .navbar .menu-items li {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
+  font-size: 15px;
   display: block;
   transition: 0.3s;
 }
@@ -141,6 +153,15 @@ export default {
   transform-origin: 0% 100%;
   transition: transform 0.4s ease-in-out;
 }
+
+.fa-regular {
+  color: var(--orange);
+}
+
+.fa-solid {
+  color: var(--orange);
+}
+
 
 .blue {
   color: var(--blue);
