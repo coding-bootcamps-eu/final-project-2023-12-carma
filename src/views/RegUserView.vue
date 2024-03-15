@@ -57,7 +57,16 @@
 </template>
 <!---->
 <script>
+import { useUserStore } from '@/stores/user'
+
 export default {
+  setup() {
+    const userStore = useUserStore()
+
+    return {
+      userStore
+    }
+  },
   data() {
     return {
       email: '',
@@ -89,10 +98,16 @@ export default {
           }
           return response.json()
         })
-        .then((responseData) => {
+
+        .then((user) => {
+          this.userStore.loggedInUser = user
+        })
+
+        /*.then((responseData) => {
           console.log('Data posted successfully:', responseData)
           this.$router.push('/registered')
-        })
+        })*/
+
         .catch((error) => {
           console.error('Error posting data:', error)
         })
