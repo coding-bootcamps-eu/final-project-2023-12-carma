@@ -34,13 +34,13 @@
         </div>
         <!--hier nutzen wir ein fontawesome-Zeichen, alert einfügen-->
         <div class="event-container-rechts">
+          <button>
+            <router-link :to="'/edit-ride/'"><i class="fa-solid fa-pen-to-square"></i></router-link>
+          </button>
           <button @click="confirmDelete(index, event.key)">
             <i class="fa-solid fa-trash"></i>
           </button>
           <!--hier nutzen wir ein fontawesome-Zeichen-->
-          <button>
-            <router-link :to="'/edit-ride/'"><i class="fa-solid fa-pen-to-square"></i></router-link>
-          </button>
         </div>
       </li>
     </ul>
@@ -186,7 +186,7 @@ button {
 
 .event-li {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   background-color: var(--beige-light);
   width: 23rem;
   height: 127px;
@@ -198,11 +198,16 @@ button {
 
 .event-container-links {
   display: flex;
+  width: 200px;
+  margin-top: 50px;
+  margin-left: 20px;
   flex-direction: column;
 }
 
 .event-container-rechts {
   display: flex;
+  margin-top: 50px;
+  margin-right: 20px;
   flex-direction: column;
 }
 
@@ -224,6 +229,15 @@ button {
   color: var(--beige-light);
 }
 
+.fa-pen-to-square {
+  color: var(--orange);
+}
+
+.fa-trash {
+  color: var(--orange);
+  margin-top: 20px;
+}
+
 .event-user-icon {
   margin-left: 00px;
   margin-top: 0px;
@@ -234,12 +248,14 @@ button {
 
 .event-name {
   font-weight: 700;
+  margin-top: 0px;
   font-size: 15px;
   line-height: 17.61px;
 }
 
-.event-start {
+.event-date {
   font-weight: 500;
+  margin-top: 20px;
   font-size: 15px;
   line-height: 17.61px;
 }
@@ -249,18 +265,16 @@ button {
   font-size: 15px;
   line-height: 17.61px;
 }
-
-submit {
-  all: unset;
-  text-decoration: none;
-}
 </style>
 
 <!--Next Steps:
 Menü,  Header, Footer einbinden
   font-family: Raleway;
 
-
+submit {
+  all: unset;
+  text-decoration: none;
+}
 
 
 Delete-Overlay
