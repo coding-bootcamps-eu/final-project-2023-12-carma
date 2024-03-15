@@ -19,11 +19,23 @@
       V-Calendar-->
       <p>Von</p>
       <p>{{ eventStart }}</p>
-      <Datepicker-Component v-model="eventStart" />
+      <input
+        class="input-date"
+        type="datetime-local"
+        v-model="eventStart"
+        id="event-start"
+        placeholder="Von"
+      />
 
       <p>Bis</p>
       <p>{{ eventEnd }}</p>
-      <Datepicker-Component v-model="eventEnd" />
+      <input
+        class="input-date"
+        type="datetime-local"
+        v-model="eventEnd"
+        id="event-end"
+        placeholder="Bis"
+      />
 
       <!--Auswahlmöglichkeit der MitfahrerInnen durch dynamisch erzeugte option-Elemente 
         -> je nach pinia-Einbindung nochmal genau überprüfen, welche Daten abgefragt werden sollen-->
@@ -53,26 +65,54 @@
 </template>
 
 <script>
+import { useUserStore } from '@/stores/user'
+
 export default {
   data() {
     return {
-      eventDescription: 'Fahrt zum Meer',
-      eventTypeP: 'voraus!',
+      eventDescription: '',
+      eventTypeP: '',
       eventStart: '',
       eventEnd: '',
-      eventNote: '',
-      selectedParticipants: [],
-      drivers: [
-        { id: 1, firstName: 'Maria' },
-        { id: 2, firstName: 'Doro' },
-        { id: 3, firstName: 'Christoph' },
-        { id: 4, firstName: 'Lorenz' }
-      ]
+      eventNote: ''
     }
   },
+  async mounted() {
+    // Populate form fields with event data for the loggedInUser when the component is mounted
+    await this.populateFormData()
+  },
   methods: {
-    submitForm() {},
-    cancel() {}
+    async populateFormData() {
+      const store = useUserStore() // Get access to the 'user' store
+      const loggedInUser = store.loggedInUser // Get the loggedInUser from the store
+
+      // Check if loggedInUser exists
+      if (loggedInUser) {
+        try {
+          // Fetch event data for the loggedInUser from localhost:4000/events using fetch API
+          const response = await fetch(`http://localhost:4000/events?driverId=${loggedInUser.id}`)
+          const eventData = await response.json()
+
+          // Populate form fields with fetched event data
+          this.eventDescription = eventData.eventDescription
+          this.eventTypeP = eventData.eventTypeP
+          this.eventStart = eventData.eventStart
+          this.eventEnd = eventData.eventEnd
+
+          this.eventNote = eventData.eventNote
+        } catch (error) {
+          console.error('Error fetching event data:', error)
+        }
+      } else {
+        console.error('No loggedInUser found.') // Handle case where loggedInUser is not available
+      }
+    },
+    submitForm() {
+      // Implement submit logic
+    },
+    cancel() {
+      // Implement cancel logic if needed
+    }
   }
 }
 </script>
