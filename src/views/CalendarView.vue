@@ -1,34 +1,58 @@
 <template>
   <!--br müssen noch raus, und Abstände über css gelöst werden-->
-  <br />
-  <br />
-  <br />
-  <br />
-  <br />
+
   <div class="container">
     <!--V-Calendar-Plugin attributes werden im method-Abschnitt gebindet-->
-    <VCalendar :initial-page="{ month: 3, year: 2024 }" :attributes="attrs" borderless expanded />
+    <VCalendar
+      :initial-page="{ month: 3, year: 2024 }"
+      :attributes="attrs"
+      borderless
+      transparent
+      expanded
+    />
   </div>
-  <button><RouterLink to="/new-ride">+</RouterLink></button>
+  <div class="btn-plus">
+    <button>
+      <RouterLink to="/new-ride"> <i class="fa-solid fa-plus fa-2xl"></i></RouterLink>
+    </button>
+  </div>
   <!--hier nutzen wir ein fontawesome-Zeichen-->
-  <ul>
-    <li v-for="(event, index) in attrs" :key="index">
-      <div>Erstellt von: {{ event.firstName }}</div>
-      <div>{{ event.description }}</div>
-      <div>Start: {{ event.dates.start }}</div>
-      <div>End: {{ event.dates.end }}</div>
-      <!--hier nutzen wir ein fontawesome-Zeichen, alert einfügen-->
-      <button @click="confirmDelete(index, event.key)">Delete</button>
-      <!--hier nutzen wir ein fontawesome-Zeichen-->
-      <router-link :to="'/edit-ride/'">Edit</router-link>
-    </li>
-  </ul>
+  <div class="event-container">
+    <ul class="ul-style">
+      <li class="event-li" v-for="(event, index) in attrs" :key="index">
+        <div class="event-container-links">
+          <div>
+            <UserIcon class="event-user-icon">{{ event.firstName }}</UserIcon>
+          </div>
+          <div class="event-name">{{ event.description }}</div>
+          <!--<div class="event-start">Start: {{ event.dates.start.toLocaleDateString('de-DE') }}</div>
+        <div class="event-end">End: {{ event.dates.end.toLocaleDateString('de-DE') }}</div>-->
+          <div class="event-date">
+            {{ event.dates.start.toLocaleDateString('de-DE') }} -
+            {{ event.dates.end.toLocaleDateString('de-DE') }}
+          </div>
+        </div>
+        <!--hier nutzen wir ein fontawesome-Zeichen, alert einfügen-->
+        <div class="event-container-rechts">
+          <button @click="confirmDelete(index, event.key)">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+          <!--hier nutzen wir ein fontawesome-Zeichen-->
+          <button>
+            <router-link :to="'/edit-ride/'"><i class="fa-solid fa-pen-to-square"></i></router-link>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
 
   <!--hier muss das jeweilige li aus der ul entfernt werden,
         vorher noch einen alert "wirklich löschen?", das könnte man in einer method anlegen, die @click dann ausgeführt wird-->
 </template>
 
 <script>
+import UserIcon from '@/components/UserIcon.vue'
+
 export default {
   data() {
     return {
@@ -48,6 +72,10 @@ export default {
         console.error('Error fetching data:', error)
       })
   },
+  components: {
+    UserIcon
+  },
+
   methods: {
     async fetchEvents() {
       // Fetch der events
@@ -127,14 +155,112 @@ export default {
 </script>
 
 <style scoped>
+button {
+  all: unset;
+  text-decoration: none;
+}
+
+.vc-header {
+  color: var(--orange);
+}
+
+.vc-title {
+  color: var(--orange);
+}
+
 .container {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 4px;
   width: 23rem;
   margin: auto;
+  margin-top: 73px;
+}
+
+.ul-style {
+  list-style: none;
+  margin: 0px;
+  margin-top: 30px;
+  padding: 0px;
+}
+
+.event-li {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--beige-light);
+  width: 23rem;
+  height: 127px;
+  margin-left: 24px;
+  margin-bottom: 30px;
+  margin: auto;
+  border-radius: 4px;
+}
+
+.event-container-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-container-rechts {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-plus {
+  background-color: var(--green-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 4.563rem;
+  height: 3.125rem;
+  margin-left: 11.063rem;
+  margin-top: 35px;
+  border-radius: 0.25rem;
+}
+
+.fa-plus {
+  color: var(--beige-light);
+}
+
+.event-user-icon {
+  margin-left: 00px;
+  margin-top: 0px;
+  padding: 0px;
+  background-color: darkblue;
+  position: relative;
+}
+
+.event-name {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 17.61px;
+}
+
+.event-start {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 17.61px;
+}
+
+.event-end {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 17.61px;
+}
+
+submit {
+  all: unset;
+  text-decoration: none;
 }
 </style>
 
 <!--Next Steps:
 Menü,  Header, Footer einbinden
+  font-family: Raleway;
+
+
 
 
 Delete-Overlay
