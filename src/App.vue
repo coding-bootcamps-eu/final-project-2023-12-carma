@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <body class="app-container">
+  <div class="app-container">
     <header>
       <nav v-if="$route.meta.hasMainMenu">
         <div class="navbar">
@@ -39,7 +39,7 @@ export default {
     <footer>
       <p class="carma-logo">carma</p>
     </footer>
-  </body>
+  </div>
 </template>
 
 <style scoped>

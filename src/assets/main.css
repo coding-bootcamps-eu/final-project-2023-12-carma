@@ -6,12 +6,15 @@
   color: var(--orange);
 }
 
+body {
+  margin: 0;
+}
+
 /* mobile first */
 .app-container {
   width: 428px;
   height: 926px;
   margin: auto;
-  border: 5px solid rgb(154, 154, 154);
   border-radius: 5px;
   background-color: var(--rosa);
 }
