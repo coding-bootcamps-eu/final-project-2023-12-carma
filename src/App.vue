@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <body class="app-container">
+  <div class="app-container">
     <header>
       <UserIcon v-if="$route.meta.hasUserIcon"></UserIcon>
       <nav v-if="$route.meta.hasMainMenu">
@@ -29,7 +29,10 @@ export default {
               class="menu-items"
               :class="{ open: isNavOpen, transform: isNavOpen, closed: !isNavOpen }"
             >
-              <li><i class="fa-solid fa-house"></i> <router-link to="/home">Home</router-link></li>
+              <li>
+                <i class="fa-solid fa-house"></i>
+                <router-link to="/home">Home</router-link>
+              </li>
               <li>
                 <i class="fa-regular fa-calendar-days"></i>
                 <router-link to="/calendar">Fahrt buchen</router-link>
@@ -65,7 +68,7 @@ export default {
         carma
       </p>
     </footer>
-  </body>
+  </div>
 </template>
 
 <style scoped>
@@ -78,10 +81,11 @@ export default {
 }
 .navbar .nav-container a {
   text-decoration: none;
-  color: var(--orange);
+  color: var(--beige-light);
   font-size: 15px;
   padding: 2rem;
   line-height: 1.5rem;
+  text-align: right;
 }
 
 .navbar .nav-container a:hover {
@@ -115,7 +119,7 @@ export default {
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: var(--beige-light);
+  background-color: var(--green-dark);
   overflow-x: hidden;
   padding-top: 60px;
   transition: 0.5s;
@@ -155,13 +159,12 @@ export default {
 }
 
 .fa-regular {
-  color: var(--orange);
+  color: var(--beige-light);
 }
 
 .fa-solid {
-  color: var(--orange);
+  color: var(--beige-light);
 }
-
 
 .blue {
   color: var(--blue);

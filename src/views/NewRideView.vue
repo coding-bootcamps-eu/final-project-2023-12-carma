@@ -2,7 +2,7 @@
 <template>
   <div>
     <!-- Überschrift -->
-    <h1 class="align">Deine <br />nächste Fahrt</h1>
+    <h1 class="h1-event">Deine <br />nächste Fahrt</h1>
   </div>
   <div class="flex-container">
     <form @submit.prevent="createNewRide">

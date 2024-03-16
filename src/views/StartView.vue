@@ -14,6 +14,8 @@
         </button>
         <button><router-link to="/login" class="btn-pre-small">log in</router-link></button>
       </div>
+      <div class="wiese"></div>
+      <div class="bus"></div>
     </div>
   </section>
 </template>
@@ -23,6 +25,17 @@ export default {}
 </script>
 
 <style scoped>
+@keyframes zoomIn {
+  from {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .start-h1 {
   font-family: 'Raleway', sans-serif;
   font-size: 36px;
@@ -30,6 +43,10 @@ export default {}
   color: var(--orange);
   text-align: center;
   margin-top: 6rem;
+
+  text-align: center;
+  animation: zoomIn 1s ease-out forwards;
+  overflow: hidden;
 
   text-align: center;
   transform: scale(0.94);
@@ -73,7 +90,7 @@ span:nth-child(5) {
 }
 
 .orange-circle {
-  background-image: url('./public/kreis_sonne.png');
+  background-image: url('./public/kreis_sonne.svg');
   width: 50px;
   height: 50px;
   background-size: cover;
@@ -81,6 +98,8 @@ span:nth-child(5) {
   position: absolute;
   top: -0.6rem;
   left: 61%;
+  opacity: 0.8;
+  display: inline-block; /* Damit das div die Größe des Bildes annimmt */
 }
 
 .btn-container {
@@ -113,4 +132,15 @@ button {
     opacity: 1;
   }
 }
+
+/* .wiese {
+  background-image: url('/wiese.svg');
+  background-color: var(--rosa);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  width: 1000;
+  height: 926px;
+} */
 </style>

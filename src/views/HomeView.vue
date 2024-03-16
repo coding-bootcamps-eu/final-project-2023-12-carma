@@ -1,15 +1,13 @@
 <template>
-  <div>Platzhalter Icon Name</div>
   <div>
     <h1 v-if="user.isLoggedIn">Hi {{ user.loggedInUser.firstName }}!</h1>
   </div>
 
-  <p v-if="nextEventStartDate">
-    Nächste Fahrt am: {{ nextEventStartDate.toLocaleDateString('de-DE') }}
-  </p>
   <div>
-    <p>{{}}</p>
+    <p v-if="nextEventStartDate">Nächste Fahrt am:</p>
+    <button><router-link to=/login class="btn-ride">{{ nextEventStartDate.toLocaleDateString('de-DE') }}</router-link></button>
   </div>
+
   <i class="fa-solid fa-car"></i>
 
   <div v-for="car in cars" :key="car.id">
@@ -18,8 +16,15 @@
   </div>
   <!--aktuell aus Datenbank des jeweilige Autos-->
 
-  <div>
-    <VCalendar :initial-page="{ month: 3, year: 2024 }" :attributes="attrs" borderless expanded />
+  <div class="container">
+    <!--V-Calendar-Plugin attributes werden im method-Abschnitt gebindet-->
+    <VCalendar
+      :initial-page="{ month: 3, year: 2024 }"
+      :attributes="attrs"
+      borderless
+      transparent
+      expanded
+    />
   </div>
 </template>
 
@@ -127,15 +132,21 @@ export default {
 }
 </script>
 
-<!--Nach dem Login sollten wir wissen, welcher User angemeldet ist 
-  und so auf die weiteren Daten zugreifen. Wie das genau funktioniert, 
-  weiß ich gerade leider nicht. -->
+<style scoped>
+.vc-header {
+  color: var(--orange);
+}
 
-<style scoped></style>
+.vc-title {
+  color: var(--orange);
+}
 
-<!--Next Steps:
-Menü und Kalender Components einbauen
-Styling
-Username und Datum nächste Fahrt aus Datenbank fetchen
-Autoname, Kilometerstand und carma-Punktestand aus Datenbank fetchen
--->
+.container {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 4px;
+  width: 23rem;
+  margin: auto;
+  margin-top: 73px;
+}
+</style>

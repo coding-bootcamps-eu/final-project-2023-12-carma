@@ -1,40 +1,38 @@
 <template>
-  <div class="app-container-small">
-    <div>
-      <h1 class="h1-event">{{ eventDescription }}</h1>
-    </div>
+  <div>
+    <h1 class="h1-event">{{ eventDescription }}</h1>
+  </div>
 
-    <!--Anzeige des EventType mit Zusatzspruch, "Aber ist gut fürs Carma" oder
+  <!--Anzeige des EventType mit Zusatzspruch, "Aber ist gut fürs Carma" oder
   "voraus!", evt mit v-if oder v-show?-->
-    <div>
-      <p>{{ eventType }}</p>
-      <p>{{ eventTypeP }}</p>
-    </div>
-    <!--Als Block dargestellte Infos über das Event, Start und Ende, wer sind 
+  <div>
+    <p>{{ eventType }}</p>
+    <p>{{ eventTypeP }}</p>
+  </div>
+  <!--Als Block dargestellte Infos über das Event, Start und Ende, wer sind 
       die MitfahrerInnen(in der Darstellung als MitfahrerInnen-Icon) und evt
     ein Kommentar zur Fahrt als eventNote-->
-    <div class="ride-info-block">
-      <p>Von</p>
-      <p>{{ eventStart }}</p>
-      <p>Bis</p>
-      <p>{{ eventEnd }}</p>
-      <p>Du fährst mit</p>
-      <p>{{ eventParticipants }}</p>
-      <p>{{ eventNote }}</p>
-    </div>
-    <form v-if="isRideFinished" class="endride">
-      <div class="popup">
-        <p class="text1">Deine Fahrt ist zu Ende!</p>
-        <p class="text2">Bis zum nächsten Mal</p>
-        <br /><br />
-        <input class="input-main" type="text" placeholder="Aktueller Tachostand *" required />
-        <input class="input-main" type="text" placeholder="Hinterlasse eine Notiz" />
-        <div>
-          <button><i class="fa-regular fa-circle-check"></i></button>
-        </div>
-      </div>
-    </form>
+  <div class="ride-info-block">
+    <p>Von</p>
+    <p>{{ eventStart }}</p>
+    <p>Bis</p>
+    <p>{{ eventEnd }}</p>
+    <p>Du fährst mit</p>
+    <p>{{ eventParticipants }}</p>
+    <p>{{ eventNote }}</p>
   </div>
+  <form v-if="isRideFinished" class="endride">
+    <div class="popup">
+      <p class="text1">Deine Fahrt ist zu Ende!</p>
+      <p class="text2">Bis zum nächsten Mal</p>
+      <br /><br />
+      <input class="input-main" type="text" placeholder="Aktueller Tachostand *" required />
+      <input class="input-main" type="text" placeholder="Hinterlasse eine Notiz" />
+      <div>
+        <button><i class="fa-regular fa-circle-check"></i></button>
+      </div>
+    </div>
+  </form>
   <div class="btn-container">
     <button @click="isRideFinished = true" class="btn-main-long">
       FAHRT BEENDEN
@@ -70,9 +68,6 @@ export default {
 </script>
 
 <style scoped>
-.app-container-small {
-  position: relative;
-}
 .btn-container {
   display: flex;
   flex-direction: row;
