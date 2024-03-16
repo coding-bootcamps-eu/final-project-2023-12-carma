@@ -6,12 +6,16 @@
   color: var(--orange);
 }
 
+body {
+  margin: 0;
+}
+
 /* mobile first */
 .app-container {
   width: 428px;
   height: 926px;
   margin: auto;
-  border: 5px solid rgb(154, 154, 154);
+  border: 5px;
   border-radius: 5px;
   background-color: var(--rosa);
 }
@@ -37,7 +41,7 @@ h1 {
   font-weight: bold;
   color: var(--orange);
   text-align: left;
-  margin-top: 3.5rem;
+  padding-top: 4.5rem;
   margin-bottom: 4rem;
   max-width: 28rem;
 }
@@ -83,7 +87,7 @@ h2 {
 }
 
 .bg-pre-bus-large {
-  background-image: url('/BG_bus_gross.png');
+  background-image: url('/BG_bus_gross.svg');
   background-color: var(--rosa);
   background-size: cover;
   background-position: center;
@@ -94,7 +98,7 @@ h2 {
 }
 
 .bg-pre-bus-small {
-  background-image: url('/BG_bus_klein.png');
+  background-image: url('/BG_bus_klein.svg');
   background-color: var(--rosa);
   background-size: cover;
   background-position: center;
@@ -105,13 +109,13 @@ h2 {
 }
 
 .bg-pre-bus-small-night {
-  background-image: url('/BG_bus_klein_night.png');
+  background-image: url('/BG_bus_klein_night.svg');
   background-color: var(--rosa);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
-  width: 428px;
+  width: 1000;
   height: 926px;
 }
 

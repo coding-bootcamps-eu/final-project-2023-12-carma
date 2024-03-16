@@ -37,7 +37,7 @@ export default {
   height: 30px;
   width: 30px;
   position: absolute;
-  background-color: var(--green-dark);
+  background-color: var(--user-3);
   border-radius: 50%;
   color: var(--beige-light);
   text-align: center;
@@ -51,7 +51,7 @@ export default {
 .logout {
   height: 6rem;
   width: 70%;
-  background-color: var(--beige-light);
+  background-color: var(--green-dark);
   position: absolute;
   right: 0;
   text-align: center;
@@ -59,6 +59,11 @@ export default {
   font-size: 15px;
   z-index: 3;
   overflow-x: hidden;
+  color: var(--beige-light);
+}
+
+.logout a:hover {
+  font-weight: bolder;
 }
 
 .open {
