@@ -186,13 +186,13 @@ button {
 
 .event-li {
   display: flex;
+  position: relative;
   justify-content: space-between;
   background-color: var(--beige-light);
   width: 23rem;
   height: 127px;
   margin-left: 24px;
-  margin-bottom: 30px;
-  margin: auto;
+  margin-bottom: 20px;
   border-radius: 4px;
 }
 
