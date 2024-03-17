@@ -55,11 +55,11 @@ export default {
         </div>
       </nav>
     </header>
-    <main></main>
-    <footer></footer>
-    <div>
-      <RouterView />
-    </div>
+    <main>
+      <div>
+        <RouterView />
+      </div>
+    </main>
     <footer>
       <p
         class="carma-logo"

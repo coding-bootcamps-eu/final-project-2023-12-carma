@@ -3,10 +3,10 @@
     <h1 v-if="user.isLoggedIn">Hi {{ user.loggedInUser.firstName }}!</h1>
   </div>
 
-  <div class="container">
+  <div class="container-next-ride">
     <div class="btn-main-long">
       <p v-if="nextEventStartDate" @click="$router.push('/start-ride')">
-        Nächste Fahrt am:{{ nextEventStartDate.toLocaleDateString('de-DE') }}
+        Nächste Fahrt am: {{ nextEventStartDate.toLocaleDateString('de-DE') }}
       </p>
       <p v-else @click="$router.push('/calendar')">Keine weitere Fahrt eingetragen</p>
     </div>
@@ -162,6 +162,19 @@ export default {
 }
 
 .container:hover {
+  background-color: var(--blue);
+  transform: scale(1.05);
+}
+
+.container-next-ride {
+  background-color: var(--beige-light);
+  border-radius: 4px;
+  width: 23.5rem;
+  margin: auto;
+  margin-top: 73px;
+}
+
+.container-next-ride:hover {
   background-color: var(--blue);
   transform: scale(1.05);
 }
