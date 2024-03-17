@@ -18,27 +18,33 @@
           id="event-description"
           placeholder="Name der Fahrt"
           minlength="1"
-          maxlength="18"
+          maxlength="30"
+          required
         />
       </div>
+      <!--bisher war die maximale Zeichenlänge 18-->
       <div>
         <!-- Datums-Input für das Event, Start und Ende, evt mit Datepicker und range, 
       später POST zur API, Format anpassen zur Darstellung in der Calendar-Component -->
 
-        <input
-          class="input-date"
-          type="datetime-local"
-          v-model="eventStart"
-          id="event-start"
-          placeholder="Von"
-        />
-        <input
-          class="input-date"
-          type="datetime-local"
-          v-model="eventEnd"
-          id="event-end"
-          placeholder="Bis"
-        />
+        <div class="dates">
+          <input
+            class="input-date"
+            type="datetime-local"
+            v-model="eventStart"
+            id="event-start"
+            placeholder="Von"
+            required
+          />
+          <input
+            class="input-date"
+            type="datetime-local"
+            v-model="eventEnd"
+            id="event-end"
+            placeholder="Bis"
+            required
+          />
+        </div>
       </div>
       <div>
         <!-- MitfahrerInnen-Input für das Event, am besten dynamisch erzeugt 
@@ -76,28 +82,32 @@
           placeholder="Kommentar"
         >
         </textarea>
-      </div>
-      <div class="input-choose-container">
-        <!-- Auswahl des EventType, später POST zur API, eventType -->
 
-        <label for="freie-fahrt">
-          <input
-            class="input-choose"
-            type="radio"
-            v-model="eventType"
-            id="freie-fahrt"
-            value="freie-fahrt"
-          />Freie Fahrt
-        </label>
-        <label for="muss-sein">
-          <input
-            class="input-choose"
-            type="radio"
-            v-model="eventType"
-            id="muss-sein"
-            value="muss-sein"
-          />Muss sein
-        </label>
+        <div class="input-choose-container">
+          <!-- Auswahl des EventType, später POST zur API, eventType -->
+
+          <label for="freie-fahrt">
+            <input
+              class="input-choose"
+              type="radio"
+              v-model="eventType"
+              id="freie-fahrt"
+              value="freie-fahrt"
+              name="radio"
+              required
+            />Freie Fahrt
+          </label>
+          <label for="muss-sein">
+            <input
+              class="input-choose"
+              type="radio"
+              v-model="eventType"
+              id="muss-sein"
+              value="muss-sein"
+              name="radio"
+            />Muss sein
+          </label>
+        </div>
       </div>
       <div class="btn-container">
         <button class="btn-main-short">ABBRECHEN</button
@@ -168,11 +178,27 @@ export default {
 </script>
 
 <style scoped>
+.create-event-box {
+  border: solid green 2px;
+  margin: auto;
+}
+
+.flex-container {
+  border: solid red 1px;
+  width: 372px;
+  margin: auto;
+}
 .input-choose-container {
+  border: solid blue 2px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 15px;
+}
+
+.input-pre {
+  margin-top: 15px;
 }
 
 .input-choose {
@@ -206,6 +232,20 @@ export default {
   font-style: italic;
   text-align: center;
 }
+
+.dates {
+  display: flex;
+  justify-content: space-between;
+}
+
+#event-start {
+  width: 152px;
+}
+
+#event-end {
+  width: 152px;
+}
+
 .comment-field {
   background-color: var(--beige-light);
   border: solid 0.1rem var(--orange);
