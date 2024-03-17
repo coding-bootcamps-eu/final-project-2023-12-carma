@@ -18,3 +18,57 @@
   --user-3: #b4d9c0;
   --user-4: #71a2b1;
 }
+
+:root {
+  .vc-purple {
+    --vc-accent-50: #faf5ff;
+    --vc-accent-100: #f3e8ff;
+    --vc-accent-200: #ec8360;
+    --vc-accent-300: #c63300;
+    --vc-accent-400: #c63300;
+    --vc-accent-500: #c63300;
+    --vc-accent-600: #c63300;
+    --vc-accent-700: #c63300;
+    --vc-accent-800: #c63300;
+    --vc-accent-900: #c63300;
+  }
+
+  .vc-orange {
+    --vc-accent-50: #fff7ed;
+    --vc-accent-100: #ffedd5;
+    --vc-accent-200: #a5cad5;
+    --vc-accent-300: #98d7ea;
+    --vc-accent-400: #71a2b1;
+    --vc-accent-500: #71a2b1;
+    --vc-accent-600: #71a2b1;
+    --vc-accent-700: #71a2b1;
+    --vc-accent-800: #71a2b1;
+    --vc-accent-900: #71a2b1;
+  }
+
+  .vc-green {
+    --vc-accent-50: #f0fdf4;
+    --vc-accent-100: #dcfce7;
+    --vc-accent-200: #bddccc;
+    --vc-accent-300: #90c5a0;
+    --vc-accent-400: #90c5a0;
+    --vc-accent-500: #90c5a0;
+    --vc-accent-600: #90c5a0;
+    --vc-accent-700: #90c5a0;
+    --vc-accent-800: #90c5a0;
+    --vc-accent-900: #90c5a0;
+  }
+
+  .vc-blue {
+    --vc-accent-50: #eff6ff;
+    --vc-accent-100: #dbeafe;
+    --vc-accent-200: #e7d0a2;
+    --vc-accent-300: #c3aa77;
+    --vc-accent-400: #c3aa77;
+    --vc-accent-500: #c3aa77;
+    --vc-accent-600: #c3aa77;
+    --vc-accent-700: #c3aa77;
+    --vc-accent-800: #c3aa77;
+    --vc-accent-900: #c3aa77;
+  }
+}
