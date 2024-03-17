@@ -1,18 +1,26 @@
 <template>
-  <div>
+  <div class="welcome-user">
     <h1 v-if="user.isLoggedIn">Hi {{ user.loggedInUser.firstName }}!</h1>
   </div>
 
-  <div>
-    <p v-if="nextEventStartDate">Nächste Fahrt am:</p>
-    <button><router-link to=/login class="btn-ride">{{ nextEventStartDate.toLocaleDateString('de-DE') }}</router-link></button>
+  <div class="container">
+    <div class="btn-main-long">
+      <p v-if="nextEventStartDate" @click="$router.push('/start-ride')">
+        Nächste Fahrt am:{{ nextEventStartDate.toLocaleDateString('de-DE') }}
+      </p>
+      <p v-else @click="$router.push('/calendar')">Keine weitere Fahrt eingetragen</p>
+    </div>
   </div>
 
-  <i class="fa-solid fa-car"></i>
-
-  <div v-for="car in cars" :key="car.id">
-    <p>Name: {{ car.name }}</p>
-    <p>Kilometers: {{ car.kilometer }}</p>
+  <div v-for="car in cars" :key="car.id" class="car-container" @click="$router.push('/registered')">
+    <div class="car-group">
+      <i class="fa-solid fa-car"></i>
+      <p>{{ car.name }}</p>
+    </div>
+    <div class="car-kilometer">
+      <i class="fa-solid fa-gauge-simple-high"></i>
+      <p>{{ car.kilometer }} km</p>
+    </div>
   </div>
   <!--aktuell aus Datenbank des jeweilige Autos-->
 
@@ -24,6 +32,7 @@
       borderless
       transparent
       expanded
+      @click="$router.push('/calendar')"
     />
   </div>
 </template>
@@ -88,7 +97,7 @@ export default {
       events.forEach((event) => {
         // Event und User zusammenbringen
         const user = users.find((user) => user.id === event.driverId)
-        if (user) {
+        if (user && !event.finished) {
           // Wenn gefunden, formatieren des Start-Datums
           const startDateString = event.start.split('T')[0]
           const [year, month, day] = startDateString.split('-').map(Number)
@@ -117,7 +126,9 @@ export default {
     },
     findNextEventStartDate(events) {
       const loggedInUserId = this.user.loggedInUser.id
-      const userEvents = events.filter((event) => event.driverId === loggedInUserId)
+      const userEvents = events.filter(
+        (event) => event.driverId === loggedInUserId && !event.finished
+      )
       const sortedEvents = userEvents.sort((a, b) => new Date(a.start) - new Date(b.start))
       if (sortedEvents.length > 0) {
         const nextEvent = sortedEvents[0]
@@ -145,8 +156,38 @@ export default {
   background-color: var(--beige-light);
   border: solid 0.1rem var(--orange);
   border-radius: 4px;
-  width: 23rem;
+  width: 23.5rem;
   margin: auto;
   margin-top: 73px;
+}
+
+.container:hover {
+  background-color: var(--blue);
+  transform: scale(1.05);
+}
+
+.welcome-user {
+  padding-top: 2rem;
+}
+
+.car-container {
+  margin-top: 4rem;
+  margin-left: 6rem;
+  display: flex;
+}
+
+.car-group:hover {
+  background-color: var(--blue);
+  transform: scale(1.05);
+}
+
+.car-group {
+  font-size: 2rem;
+  margin-right: 3rem;
+}
+
+.car-kilometer {
+  margin-left: 1.2rem;
+  font-size: 2rem;
 }
 </style>
