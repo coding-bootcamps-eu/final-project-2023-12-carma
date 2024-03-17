@@ -139,7 +139,8 @@ export default {
         end: this.eventEnd,
         notes: this.eventNotes,
         type: this.eventType,
-        driverId: this.user.loggedInUser.id
+        driverId: this.user.loggedInUser.id,
+        finished: false
       }
       fetch('http://localhost:4000/events', {
         method: 'POST',

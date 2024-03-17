@@ -99,7 +99,7 @@ export default {
       events.forEach((event) => {
         // Event und User zusammenbringen
         const user = users.find((user) => user.id === event.driverId)
-        if (user) {
+        if (user && !event.finished) {
           // Wenn gefunden, formatieren des Start-Datums
           const startDateString = event.start.split('T')[0]
           const [year, month, day] = startDateString.split('-').map(Number)

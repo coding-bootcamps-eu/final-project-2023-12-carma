@@ -3,9 +3,11 @@
   <form @submit.prevent="submitForm">
     <div class="app-container-small">
       <!--Dynamisches Ändern der Überschrift-->
-      <h1 class="h1-event">{{ eventDescription }}</h1>
-      <input type="text" minlength="1" maxlength="18" v-model="eventDescription" />
 
+      <div>
+        <h1 class="h1-event">{{ eventDescription }}</h1>
+        <input type="text" minlength="1" maxlength="18" v-model="eventDescription" />
+      </div>
       <!--Dynamische Auswahl des Fahrt-Typs-->
       <div>
         <input type="radio" id="freie-fahrt" value="voraus!" v-model="eventTypeP" />
@@ -90,16 +92,16 @@ export default {
       if (loggedInUser) {
         try {
           // Fetch event data for the loggedInUser from localhost:4000/events using fetch API
-          const response = await fetch(`http://localhost:4000/events?driverId=${loggedInUser.id}`)
+          const response = await fetch(`http://localhost:4000/events?driverId=1710581067070`)
           const eventData = await response.json()
-
+          console.log(eventData)
           // Populate form fields with fetched event data
-          this.eventDescription = eventData.eventDescription
-          this.eventTypeP = eventData.eventTypeP
-          this.eventStart = eventData.eventStart
-          this.eventEnd = eventData.eventEnd
+          this.eventDescription = eventData.description
+          this.eventTypeP = eventData.type
+          this.eventStart = eventData.start
+          this.eventEnd = eventData.end
 
-          this.eventNote = eventData.eventNote
+          this.eventNote = eventData.note
         } catch (error) {
           console.error('Error fetching event data:', error)
         }
@@ -131,5 +133,82 @@ export default {
 
 .h1-event {
   font-style: italic;
+}
+
+.input-choose-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-choose {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 50%;
+  padding: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+
+  color: var(--orange);
+  font-size: 15px;
+  font-weight: light;
+  font-style: italic;
+  text-align: center;
+  margin-left: 2rem;
+  margin-right: 0.5rem;
+}
+
+.input-date {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  width: 1.8rem;
+  height: 1.8rem;
+
+  color: var(--orange);
+  font-size: 15px;
+  font-weight: light;
+  font-style: italic;
+  text-align: center;
+}
+.comment-field {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  width: 22.25rem;
+
+  color: var(--orange);
+  font-size: 15px;
+  font-weight: light;
+  font-style: italic;
+}
+
+/* .flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+} */
+.align {
+  text-align: left;
+  margin-left: 2rem;
+}
+
+select {
+  text-align: right;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  position: absolute;
+  bottom: 6rem;
 }
 </style>
