@@ -33,7 +33,12 @@
         placeholder="Aktueller Tachostand *"
         required
       />
-      <input class="input-main" type="text" placeholder="Hinterlasse eine Notiz" />
+      <input
+        class="input-main"
+        type="text"
+        v-model="afterRideNotes"
+        placeholder="Hinterlasse eine Notiz"
+      />
       <div @click="updateCarKilometer()">
         <i class="fa-regular fa-circle-check"></i>
       </div>
@@ -67,7 +72,8 @@ export default {
       isRideFinished: null,
       nextEventStartDate: null,
       carKilometer: '',
-      eventKilometer: null
+      afterRideNotes: '',
+      eventKilometer: ''
     }
   },
   mounted() {
@@ -192,6 +198,7 @@ export default {
                   },
                   body: JSON.stringify({
                     kilometer: this.eventKilometer,
+                    afterRideNotes: this.afterRideNotes,
                     finished: true
                   })
                 })
@@ -202,7 +209,7 @@ export default {
                     return response.json()
                   })
                   .then((updatedCar) => {
-                    console.log('Fahrt erfolgreich gelöscht:', updatedCar)
+                    console.log('Fahrt erfolgreich beendet:', updatedCar)
                   })
                   .catch((error) => {
                     console.error('Error updating car participants:', error)

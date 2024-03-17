@@ -4,7 +4,13 @@
       <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
     </form>
   </div>
-  <div class="icon" @click="isLogoutOpen = !isLogoutOpen">{{ user.loggedInUser.firstName[0] }}</div>
+  <div
+    class="icon"
+    @click="isLogoutOpen = !isLogoutOpen"
+    :style="{ backgroundColor: `var(--user-${user.loggedInUser.id})` }"
+  >
+    {{ user.loggedInUser.firstName[0] }}
+  </div>
 </template>
 
 <script>
@@ -37,7 +43,7 @@ export default {
   height: 30px;
   width: 30px;
   position: absolute;
-  background-color: var(--user-3);
+  /* background-color: var(--user-3); */
   border-radius: 50%;
   color: var(--beige-light);
   text-align: center;
