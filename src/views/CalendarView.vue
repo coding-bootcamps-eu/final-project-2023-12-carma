@@ -1,7 +1,7 @@
 <template>
-  <!--br müssen noch raus, und Abstände über css gelöst werden-->
-
-  <div class="container">
+  <!--das ist verrückt, nur eine Notlösung mit dem Inline-Style-->
+  <div style="height: 0.03px"></div>
+  <div class="container-calendar">
     <!--V-Calendar-Plugin attributes werden im method-Abschnitt gebindet-->
     <VCalendar
       :initial-page="{ month: 3, year: 2024 }"
@@ -11,6 +11,7 @@
       expanded
     />
   </div>
+
   <div class="btn-plus">
     <button>
       <RouterLink to="/new-ride"> <i class="fa-solid fa-plus fa-2xl"></i></RouterLink>
@@ -21,9 +22,10 @@
     <ul class="ul-style">
       <li class="event-li" v-for="(event, index) in attrs" :key="index">
         <div class="event-container-links">
-          <div>
-            <UserIcon class="event-user-icon">{{ event.firstName }}</UserIcon>
+          <div class="event-user-icon" :style="{ backgroundColor: `var(--user-${event.colorId})` }">
+            {{ event.firstName[0] }}
           </div>
+
           <div class="event-name">{{ event.description }}</div>
           <!--<div class="event-start">Start: {{ event.dates.start.toLocaleDateString('de-DE') }}</div>
         <div class="event-end">End: {{ event.dates.end.toLocaleDateString('de-DE') }}</div>-->
@@ -51,8 +53,6 @@
 </template>
 
 <script>
-import UserIcon from '@/components/UserIcon.vue'
-
 export default {
   data() {
     return {
@@ -71,9 +71,6 @@ export default {
       .catch((error) => {
         console.error('Error fetching data:', error)
       })
-  },
-  components: {
-    UserIcon
   },
 
   methods: {
@@ -99,6 +96,7 @@ export default {
       events.forEach((event) => {
         // Event und User zusammenbringen
         const user = users.find((user) => user.id === event.driverId)
+        this.colorId = event.driverId
         if (user && !event.finished) {
           // Wenn gefunden, formatieren des Start-Datums
           const startDateString = event.start.split('T')[0]
@@ -119,7 +117,8 @@ export default {
                 },
                 description: event.description,
                 dates: { start: startDate, end: endDate },
-                firstName: user.firstName
+                firstName: user.firstName,
+                colorId: user.id
               })
             }
           }
@@ -168,7 +167,7 @@ button {
   color: var(--orange);
 }
 
-.container {
+.container-calendar {
   background-color: var(--beige-light);
   border: solid 0.1rem var(--orange);
   border-radius: 4px;
@@ -199,16 +198,17 @@ button {
 .event-container-links {
   display: flex;
   width: 200px;
-  margin-top: 50px;
+  margin-top: 15px;
   margin-left: 20px;
   flex-direction: column;
 }
 
 .event-container-rechts {
   display: flex;
-  margin-top: 50px;
+  margin-top: 28px;
   margin-right: 20px;
   flex-direction: column;
+  font-size: 1.3rem;
 }
 
 .btn-plus {
@@ -235,20 +235,23 @@ button {
 
 .fa-trash {
   color: var(--orange);
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .event-user-icon {
-  margin-left: 00px;
-  margin-top: 0px;
-  padding: 0px;
-  background-color: darkblue;
+  height: 30px;
+  width: 30px;
   position: relative;
+  background-color: var(--user-3);
+  border-radius: 50%;
+  color: var(--beige-light);
+  text-align: center;
+  line-height: 30px;
 }
 
 .event-name {
   font-weight: 700;
-  margin-top: 0px;
+  margin-top: 15px;
   font-size: 15px;
   line-height: 17.61px;
 }
