@@ -1,21 +1,52 @@
 <template>
   <div>
-    <ul>
-      <li v-for="(event, index) in attrs" :key="index">
+    <ul class="messages">
+      <li class="message" v-for="(event, index) in attrs" :key="index">
         <div>
-          {{ event.firstName }}: {{ event.afterRideNotes }}
-          {{ event.dates.end.toLocaleDateString('de-DE') }}
+          <span>{{ event.firstName }}: </span><br />
+          <span class="text">{{ event.afterRideNotes }}</span> <br />
+          <span class="date">{{ event.dates.end.toLocaleDateString('de-DE') }}</span>
         </div>
       </li>
     </ul>
+    <ul class="messages2">
+      <li class="message2" v-for="(note, index) in allNotes" :key="index">
+        <div>
+          <span>{{ user.loggedInUser.firstName }}: </span><br />
+          <span class="text">{{ note.addedNotes }}</span> <br />
+          <span class="date">{{ new Date().toLocaleDateString('de-DE') }}</span>
+        </div>
+      </li>
+    </ul>
+    <form @submit.prevent="addNotes()">
+      <textarea
+        class="comment-field"
+        id="added-notes"
+        name="added-notes"
+        rows="3"
+        placeholder="Füge eine Notiz hinzu!"
+        v-model="addedNotes"
+      ></textarea>
+      <button class="btn-main-short">Submit</button>
+    </form>
   </div>
 </template>
 
 <script>
+import { useUserStore } from '@/stores/user'
 export default {
+  setup() {
+    const user = useUserStore()
+
+    return {
+      user
+    }
+  },
   data() {
     return {
-      attrs: []
+      attrs: [],
+      addedNotes: '',
+      allNotes: []
     }
   },
   mounted() {
@@ -31,6 +62,31 @@ export default {
   },
 
   methods: {
+    addNotes() {
+      console.log(this.addedNotes)
+      fetch(`http://localhost:4000/users/${this.user.loggedInUser.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          addedNotes: this.addedNotes
+        })
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok')
+          }
+          return response.json()
+        })
+        .then((responseData) => {
+          console.log('Data posted successfully:', responseData)
+          this.allNotes.push(responseData)
+        })
+        .catch((error) => {
+          console.error('Error posting data:', error)
+        })
+    },
     async fetchEvents() {
       // Fetch der events
       const response = await fetch('http://localhost:4000/events')
@@ -83,4 +139,67 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.messages {
+  position: absolute;
+  margin-top: 5rem;
+  list-style: none;
+}
+
+.messages2 {
+  position: absolute;
+  margin-top: 22rem;
+  list-style: none;
+}
+
+.message {
+  background-color: var(--beige-light);
+  padding: 1rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  margin-right: 2.3rem;
+  position: relative;
+}
+
+.message2 {
+  background-color: var(--beige-light);
+  padding: 1rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  margin-right: 2.3rem;
+  position: relative;
+}
+
+.date {
+  color: var(--green-light);
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.text {
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+.comment-field {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  width: 20.8rem;
+
+  color: var(--orange);
+  font-size: 15px;
+  font-weight: light;
+  font-style: italic;
+  position: absolute;
+  bottom: 3rem;
+  right: 2.3rem;
+}
+.btn-main-short {
+  position: absolute;
+  bottom: 3rem;
+  right: 2.3rem;
+}
+</style>
