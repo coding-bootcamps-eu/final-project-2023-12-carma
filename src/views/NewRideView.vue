@@ -50,7 +50,7 @@
         <!-- MitfahrerInnen-Input für das Event, am besten dynamisch erzeugt 
         aus der Auto-Gruppe anhand der driver_id, mit Darstellung des Buchstaben-
         Icons, später POST zur API, if checked -> eventParticipants -->
-        <div class="input-pre" method="post">
+        <!-- <div class="input-pre" method="post">
           <label for="event-participants">Mitfahrer*innen hinzufügen</label>
           <select name="eventParticipants" id="event-participants">
             <option value="MitfahrerInnen hinzufügen"></option>
@@ -67,7 +67,7 @@
               <input type="checkbox" name="eventParticipants" id="driver-4" />
             </option>
           </select>
-        </div>
+        </div>-->
       </div>
       <div>
         <!--Möglichkeit einen Kommentar zur Fahrt zu hinterlassen, später POST 
@@ -109,6 +109,7 @@
           </label>
         </div>
       </div>
+
       <div class="btn-container">
         <button class="btn-main-short">ABBRECHEN</button
         ><button class="btn-main-short" type="submit">
@@ -178,18 +179,20 @@ export default {
 </script>
 
 <style scoped>
+.h1-event {
+  display: flex;
+  margin-left: 30px;
+}
+
 .create-event-box {
-  border: solid green 2px;
   margin: auto;
 }
 
 .flex-container {
-  border: solid red 1px;
   width: 372px;
   margin: auto;
 }
 .input-choose-container {
-  border: solid blue 2px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -252,11 +255,11 @@ export default {
   border-radius: 0.4rem;
   padding: 0.5rem;
   width: 22.25rem;
-
   color: var(--orange);
   font-size: 15px;
   font-weight: light;
   font-style: italic;
+  margin-top: 15px;
 }
 
 /* .flex-container {
@@ -280,6 +283,7 @@ select {
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-left: -30px;
 
   position: absolute;
   bottom: 6rem;
