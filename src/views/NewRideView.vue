@@ -36,6 +36,7 @@
             placeholder="Von"
             required
           />
+
           <input
             class="input-date"
             type="datetime-local"
@@ -86,33 +87,35 @@
         <div class="input-choose-container">
           <!-- Auswahl des EventType, später POST zur API, eventType -->
 
-          <label for="freie-fahrt">
-            <input
-              class="input-choose"
-              type="radio"
-              v-model="eventType"
-              id="freie-fahrt"
-              value="freie-fahrt"
-              name="radio"
-              required
-            />Freie Fahrt
-          </label>
-          <label for="muss-sein">
-            <input
-              class="input-choose"
-              type="radio"
-              v-model="eventType"
-              id="muss-sein"
-              value="muss-sein"
-              name="radio"
-            />Muss sein
-          </label>
+          <input
+            class="input-choose"
+            type="radio"
+            v-model="eventType"
+            id="freie-fahrt"
+            value="freie-fahrt"
+            name="radio"
+            required
+          />Freie Fahrt
+          <label class="label-freie-fahrt" for="freie-fahrt"></label>
+
+          <input
+            class="input-choose"
+            type="radio"
+            v-model="eventType"
+            id="muss-sein"
+            value="muss-sein"
+            name="radio"
+          />Muss sein
+          <label class="label-muss-sein" for="muss-sein"> </label>
         </div>
       </div>
 
       <div class="btn-container">
-        <button class="btn-main-short">ABBRECHEN</button
-        ><button class="btn-main-short" type="submit">
+        <!-- <button class="btn-main-short">ABBRECHEN</button>-->
+        <router-link :to="'/calendar/'"
+          ><button class="btn-main-short">ABBRECHEN</button></router-link
+        >
+        <button class="btn-main-short" type="submit">
           FERTIG
           <div class="btn-main-short-mini-bus"></div>
         </button>
@@ -221,6 +224,10 @@ export default {
   margin-right: 0.5rem;
 }
 
+.input-choose:checked {
+  background-color: var(--orange);
+}
+
 .input-date {
   background-color: var(--beige-light);
   border: solid 0.1rem var(--orange);
@@ -283,8 +290,7 @@ select {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-left: -30px;
-
+  margin-left: 10px;
   position: absolute;
   bottom: 6rem;
 }
