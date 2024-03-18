@@ -103,10 +103,10 @@ export default {
           this.userStore.loggedInUser = user
         })
 
-        /*.then((responseData) => {
+        .then((responseData) => {
           console.log('Data posted successfully:', responseData)
           this.$router.push('/registered')
-        })*/
+        })
 
         .catch((error) => {
           console.error('Error posting data:', error)

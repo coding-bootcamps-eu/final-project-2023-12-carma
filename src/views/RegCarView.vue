@@ -77,11 +77,11 @@ export default {
         })
         .then((responseData) => {
           console.log('Data posted successfully:', responseData)
+          this.$router.push('/home')
         })
         .catch((error) => {
           console.error('Error posting data:', error)
         })
-      return this.$router.push('/home')
     }
     // goToRegCar() {
     //   this.$router.push('/register/car')
