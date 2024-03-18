@@ -6,24 +6,33 @@
     <h1 class="h1-event">{{ eventToStart.description }}</h1>
   </div>
 
-  <!--Anzeige des EventType mit Zusatzspruch, "Aber ist gut fürs Carma" oder
-  "voraus!", evt mit v-if oder v-show?-->
-  <div>
-    <p>{{ eventType }}</p>
-    <p>{{ eventTypeP }}</p>
-  </div>
   <!--Als Block dargestellte Infos über das Event, Start und Ende, wer sind 
       die MitfahrerInnen(in der Darstellung als MitfahrerInnen-Icon) und evt
     ein Kommentar zur Fahrt als eventNote-->
-  <div class="ride-info-block">
-    <p>{{ eventToStart.type }}</p>
-    <p>Von</p>
-    <p>{{ eventToStart.start }}</p>
-    <p>Bis</p>
-    <p>{{ eventToStart.end }}</p>
-    <p>Du fährst mit</p>
-    <p>{{ eventParticipants }}</p>
-    <p>{{ eventToStart.notes }}</p>
+  <div class="frei-muss-container">
+    <p class="frei-oder-muss">{{ eventToStart.type }}</p>
+    <div class="event-satz">
+      <p v-if="eventToStart.type === 'Freie Fahrt'">*voraus</p>
+      <p v-if="eventToStart.type === 'Muss sein'">*Aber ist gut fürs Carma</p>
+    </div>
+  </div>
+
+  <div class="start-ride-block">
+    <div class="text-ride-block">
+      <p>Von:</p>
+      <p>{{ eventToStart.start }}</p>
+    </div>
+
+    <div class="text-ride-block">
+      <p>Bis:</p>
+      <p>{{ eventToStart.end }}</p>
+    </div>
+
+    <!-- <div class="text-ride-block">
+      <p>Du fährst mit:</p>
+      <p>{{ eventParticipants }}</p>
+      <p>{{ eventToStart.notes }}</p>
+    </div> -->
   </div>
   <form @submit.prevent="updateCarKilometer()" v-if="isRideFinished" class="endride">
     <div class="popup">
@@ -43,9 +52,11 @@
         v-model="afterRideNotes"
         placeholder="Hinterlasse eine Notiz"
       />
-      <button>
-        <i class="fa-regular fa-circle-check"></i>
-      </button>
+      <div>
+        <button>
+          <i class="fa-regular fa-circle-check"></i>
+        </button>
+      </div>
     </div>
   </form>
   <div class="btn-container">
@@ -236,6 +247,43 @@ export default {
 </script>
 
 <style scoped>
+.frei-muss-container {
+  display: flex;
+  display: row;
+  align-self: baseline;
+}
+
+.frei-oder-muss {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 0.3rem;
+  padding: 1rem;
+  width: 5rem;
+  margin-bottom: 1.5rem;
+  margin-left: 2.2rem;
+}
+
+.event-satz {
+  margin-left: 1rem;
+  padding: 1rem;
+  width: 5rem;
+}
+
+.start-ride-block {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 0.4rem;
+  width: 22.25rem;
+
+  margin: auto;
+}
+
+.text-ride-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .btn-container {
   display: flex;
   flex-direction: row;
@@ -247,6 +295,7 @@ export default {
   bottom: 6rem;
 }
 
+/* popup */
 .popup {
   background-color: var(--green-dark);
   text-align: center;

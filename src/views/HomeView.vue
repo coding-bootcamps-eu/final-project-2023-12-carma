@@ -165,7 +165,7 @@ export default {
   border-radius: 4px;
   width: 23.5rem;
   margin: auto;
-  margin-top: 73px;
+  margin-top: 40px;
 
   transition:
     background-color 0.5s ease,
@@ -182,7 +182,7 @@ export default {
 }
 
 .car-container {
-  margin-top: 4rem;
+  margin-top: 3rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
