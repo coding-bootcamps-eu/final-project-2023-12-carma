@@ -7,10 +7,7 @@
   <div
     class="icon"
     @click="isLogoutOpen = !isLogoutOpen"
-    :style="{
-      backgroundColor: `var(--user-${user.loggedInUser.id})`,
-      backgroundColor: 'var(--green-light)'
-    }"
+    :style="{ backgroundColor: `var(--user-${user.loggedInUser.id})` }"
   >
     {{ user.loggedInUser.firstName[0] }}
   </div>
@@ -47,6 +44,7 @@ export default {
   width: 30px;
   position: absolute;
   border-radius: 50%;
+  background-color: var(--green-light);
   color: var(--beige-light);
   text-align: center;
   line-height: 30px;

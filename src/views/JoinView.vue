@@ -16,7 +16,9 @@
           />
         </div>
         <div class="btn-container">
-          <button type="submit" class="btn-pre-large">los geht's!</button>
+          <button type="submit" class="btn-pre-large">
+            <router-link to="/home">los geht's!</router-link>
+          </button>
         </div>
       </form>
     </div>
