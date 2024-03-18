@@ -87,25 +87,31 @@
         <div class="input-choose-container">
           <!-- Auswahl des EventType, später POST zur API, eventType -->
 
-          <input
-            class="input-choose"
-            type="radio"
-            v-model="eventType"
-            id="freie-fahrt"
-            value="freie-fahrt"
-            name="radio"
-            required
-          />Freie Fahrt
+          <div class="input-choose-wrapper">
+            <input
+              class="input-choose"
+              type="radio"
+              v-model="eventType"
+              id="freie-fahrt"
+              value="Freie Fahrt"
+              name="radio"
+              required
+            />
+          </div>
+          Freie Fahrt
           <label class="label-freie-fahrt" for="freie-fahrt"></label>
 
-          <input
-            class="input-choose"
-            type="radio"
-            v-model="eventType"
-            id="muss-sein"
-            value="muss-sein"
-            name="radio"
-          />Muss sein
+          <div class="input-choose-wrapper">
+            <input
+              class="input-choose"
+              type="radio"
+              v-model="eventType"
+              id="muss-sein"
+              value="Muss sein"
+              name="radio"
+            />
+          </div>
+          Muss sein
           <label class="label-muss-sein" for="muss-sein"> </label>
         </div>
       </div>
@@ -207,25 +213,46 @@ export default {
   margin-top: 15px;
 }
 
+.input-choose-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-left: 2rem;
+  margin-right: 0.5rem;
+}
+
 .input-choose {
   background-color: var(--beige-light);
   border: solid 0.1rem var(--orange);
   border-radius: 50%;
-  padding: 0.5rem;
-  width: 0.5rem;
-  height: 0.5rem;
+  box-sizing: border-box;
+
+  padding: 0rem;
+  width: 1.1rem;
+  height: 1.1rem;
 
   color: var(--orange);
   font-size: 15px;
   font-weight: light;
   font-style: italic;
   text-align: center;
-  margin-left: 2rem;
-  margin-right: 0.5rem;
+  margin: 0px;
 }
 
 .input-choose:checked {
+}
+
+.input-choose:checked::before {
+  content: '';
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
   background-color: var(--orange);
+  display: block;
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
 }
 
 .input-date {
