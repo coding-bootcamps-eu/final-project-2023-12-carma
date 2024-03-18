@@ -38,6 +38,7 @@
         id="event-end"
         placeholder="Bis"
       />
+      <button>toLocaleDateString</button>
 
       <!--Auswahlmöglichkeit der MitfahrerInnen durch dynamisch erzeugte option-Elemente 
         -> je nach pinia-Einbindung nochmal genau überprüfen, welche Daten abgefragt werden sollen-->
