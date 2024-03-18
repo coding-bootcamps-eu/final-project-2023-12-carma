@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="messages">
-      <li class="message" v-for="(event, index) in attrs" :key="index">
+      <li class="message" v-for="(event, index) in formatedEventsWithNotes" :key="index">
         <div>
           <span>{{ event.firstName }}: </span><br />
           <span class="text">{{ event.afterRideNotes }}</span> <br />
@@ -10,7 +10,7 @@
       </li>
     </ul>
     <ul class="messages2">
-      <li class="message2" v-for="(note, index) in allNotes" :key="index">
+      <li class="message2" v-for="(note, index) in eventNotesAndUserNotes" :key="index">
         <div>
           <span>{{ user.loggedInUser.firstName }}: </span><br />
           <span class="text">{{ note.addedNotes }}</span> <br />
@@ -46,22 +46,28 @@ export default {
     return {
       attrs: [],
       addedNotes: '',
-      allNotes: []
+      allNotes: [],
+      users: [],
+      events: []
     }
   },
   mounted() {
-    Promise.all([this.fetchEvents(), this.fetchUsers()])
-      .then(([events, users]) => {
-        this.users = users
-
-        this.updateAttributes(events, users)
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error)
-      })
+    this.refresh()
   },
 
   methods: {
+    refresh() {
+      Promise.all([this.fetchEvents(), this.fetchUsers()])
+        .then(([events, users]) => {
+          this.users = users
+          this.events = events
+
+          // this.updateAttributes(events, users)
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error)
+        })
+    },
     addNotes() {
       console.log(this.addedNotes)
       fetch(`http://localhost:4000/users/${this.user.loggedInUser.id}`, {
@@ -81,7 +87,7 @@ export default {
         })
         .then((responseData) => {
           console.log('Data posted successfully:', responseData)
-          this.allNotes.push(responseData)
+          this.refresh()
         })
         .catch((error) => {
           console.error('Error posting data:', error)
@@ -105,7 +111,11 @@ export default {
     },
     // Funktion um die Fahrten den Usern zuzuordnen und Start und Ende der Fahrt in ein
     // Datums-Format umzuwandeln, dass V-Calendar verarbeiten kann
-    updateAttributes(events, users) {
+    updateAttributes(events, users) {}
+  },
+  computed: {
+    formatedEventsWithNotes() {
+      const result = []
       events.forEach((event) => {
         // Event und User zusammenbringen
         const user = users.find((user) => user.id === event.driverId)
@@ -123,7 +133,7 @@ export default {
             if (!isNaN(endYear) && !isNaN(endMonth) && !isNaN(endDay)) {
               const endDate = new Date(endYear, endMonth - 1, endDay)
               // Dann Fahrt-Daten in das attrs-array pushen
-              this.attrs.push({
+              result.push({
                 key: event.id,
                 description: event.description,
                 dates: { start: startDate, end: endDate },
@@ -134,6 +144,21 @@ export default {
           }
         }
       })
+
+      return result
+    },
+    userNotes() {
+      return this.users
+        .find((user) => user.id === this.user.loggedInUser.id)
+        .addedNotes.map((note) => {
+          return {
+            key: note.id,
+            afterRideNotes: note.text
+          }
+        })
+    },
+    eventNotesAndUserNotes() {
+      return [...this.formatedEventsWithNotes, ...this.userNotes]
     }
   }
 }
