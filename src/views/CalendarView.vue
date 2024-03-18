@@ -16,7 +16,6 @@
     </button>
   </div>
 
-  <!-- Move the delete form outside the loop -->
   <form @submit.prevent v-if="askDelete" class="delete-ride">
     <div class="popup">
       <p class="text1">
@@ -146,17 +145,12 @@ export default {
     showDeleteForm(index) {
       this.askDelete = true
       this.deleteIndex = index
-      console.log(this.deleteIndex)
-      console.log(this.attrs)
-      console.log(this.attrs[this.deleteIndex].key)
     },
     cancelDelete() {
       this.askDelete = false
       this.deleteIndex = null
     },
     async confirmDelete(index, eventId) {
-      // console.log(index)
-      // console.log(eventId)
       this.attrs.splice(index, 1)
       // Fahrt löschen, zunächst aus dem attrs-array löschen, dann mit eventId aus der API
       try {
