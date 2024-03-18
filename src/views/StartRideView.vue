@@ -266,7 +266,7 @@ export default {
 .event-satz {
   margin-left: 1rem;
   padding: 1rem;
-  width: 5rem;
+  width: 12rem;
 }
 
 .start-ride-block {
