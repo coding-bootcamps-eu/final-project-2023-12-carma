@@ -38,7 +38,6 @@
         id="event-end"
         placeholder="Bis"
       />
-
       <!--Auswahlmöglichkeit der MitfahrerInnen durch dynamisch erzeugte option-Elemente 
         -> je nach pinia-Einbindung nochmal genau überprüfen, welche Daten abgefragt werden sollen-->
       <p>Du fährst mit</p>

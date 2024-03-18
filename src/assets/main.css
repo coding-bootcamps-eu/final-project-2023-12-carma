@@ -20,10 +20,10 @@ body {
   background-color: var(--rosa);
 }
 
-.app-container-small {
+/* .app-container-small {
   width: 23rem;
   margin: auto;
-}
+} */
 
 h1 {
   font-family: 'Raleway', sans-serif;
@@ -36,6 +36,7 @@ h1 {
 }
 
 .h1-event {
+  margin-top: 0;
   font-family: 'Raleway', sans-serif;
   font-size: 36px;
   font-weight: bold;
@@ -60,7 +61,6 @@ h2 {
 .carma-logo {
   font-family: 'Raleway', sans-serif;
   font-size: 14px;
-  /*color: var(--blue); erzeugen wir dynamisch in der App.vue*/
   font-weight: bold;
   font-style: normal;
 
@@ -77,12 +77,12 @@ h2 {
   content: '';
   display: block;
   width: calc(100% - 10px);
-  width: 53px; /* Breite der Linie */
-  height: 2px; /* Höhe der Linie */
-  /*background-color: var(--blue);*/
+  width: 53px;
+  height: 2px;
+
   position: absolute;
-  bottom: -5px; /* Positionierung von unten */
-  left: 50%; /* Positionierung von links */
+  bottom: -5px;
+  left: 50%;
   transform: translateX(-50%);
 }
 
@@ -232,6 +232,7 @@ input {
     <div class="btn-main-long-mini-bus"></div>
   </button>
   */
+
 .btn-main-short {
   background-color: var(--green-dark);
   border-radius: 0.4rem;
@@ -266,7 +267,6 @@ input {
   transform: scale(1.05);
 }
 
-/* mit mini bus */
 .btn-main-long {
   background-color: var(--green-dark);
   border-radius: 0.4rem;
