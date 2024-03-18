@@ -92,7 +92,9 @@ export default {
       if (loggedInUser) {
         try {
           // Fetch event data for the loggedInUser from localhost:4000/events using fetch API
-          const response = await fetch(`http://localhost:4000/events?driverId=1710581067070`)
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/events?driverId=1710581067070`
+          )
           const eventData = await response.json()
           console.log(eventData)
           // Populate form fields with fetched event data

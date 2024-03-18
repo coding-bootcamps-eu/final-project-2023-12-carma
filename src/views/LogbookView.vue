@@ -52,7 +52,7 @@ export default {
   methods: {
     async fetchEvents() {
       // Fetch der events
-      const response = await fetch('http://localhost:4000/events')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/events`)
       if (!response.ok) {
         throw new Error('Failed to fetch events data')
       }
@@ -60,14 +60,14 @@ export default {
     },
     // Fetch der User
     async fetchUsers() {
-      const response = await fetch('http://localhost:4000/users')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users`)
       if (!response.ok) {
         throw new Error('Failed to fetch users data')
       }
       return await response.json()
     },
     async fetchCars() {
-      const response = await fetch('http://localhost:4000/cars')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/cars`)
       if (!response.ok) {
         throw new Error('Failed to fetch cars data')
       }

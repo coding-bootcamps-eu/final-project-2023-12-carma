@@ -76,7 +76,7 @@ export default {
   methods: {
     async fetchEvents() {
       // Fetch der events
-      const response = await fetch('http://localhost:4000/events')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/events`)
       if (!response.ok) {
         throw new Error('Failed to fetch events data')
       }
@@ -84,7 +84,7 @@ export default {
     },
     // Fetch der User
     async fetchUsers() {
-      const response = await fetch('http://localhost:4000/users')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users`)
       if (!response.ok) {
         throw new Error('Failed to fetch users data')
       }
@@ -129,7 +129,7 @@ export default {
       this.attrs.splice(index, 1)
       // Fahrt löschen, zunächst aus dem attrs-array löschen, dann mit eventId aus der API
       try {
-        const response = await fetch(`http://localhost:4000/events/${eventId}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/${eventId}`, {
           method: 'DELETE'
         })
 

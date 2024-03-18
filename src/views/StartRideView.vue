@@ -95,7 +95,7 @@ export default {
   methods: {
     async fetchEvents() {
       // Fetch der events
-      const response = await fetch('http://localhost:4000/events')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/events`)
       if (!response.ok) {
         throw new Error('Failed to fetch events data')
       }
@@ -103,14 +103,14 @@ export default {
     },
     // Fetch der User
     async fetchUsers() {
-      const response = await fetch('http://localhost:4000/users')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users`)
       if (!response.ok) {
         throw new Error('Failed to fetch users data')
       }
       return await response.json()
     },
     async fetchCars() {
-      const response = await fetch('http://localhost:4000/cars')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/cars`)
       if (!response.ok) {
         throw new Error('Failed to fetch cars data')
       }
@@ -166,7 +166,7 @@ export default {
       }
     },
     updateCarKilometer() {
-      fetch('http://localhost:4000/cars')
+      fetch(`${import.meta.env.VITE_API_URL}/cars`)
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok')
@@ -177,7 +177,7 @@ export default {
           const foundCar = data.find((car) => car.licensePlate === this.licensePlate)
 
           if (foundCar) {
-            fetch(`http://localhost:4000/cars/1`, {
+            fetch(`${import.meta.env.VITE_API_URL}/cars/1`, {
               method: 'PATCH',
               headers: {
                 'Content-Type': 'application/json'
@@ -195,7 +195,7 @@ export default {
               .then((updatedCar) => {
                 console.log('Car kilometer updated:', updatedCar)
                 this.eventKilometer = this.carKilometer - foundCar.kilometer
-                fetch(`http://localhost:4000/events/${this.eventToStart.id}`, {
+                fetch(`${import.meta.env.VITE_API_URL}/events/${this.eventToStart.id}`, {
                   method: 'PATCH',
                   headers: {
                     'Content-Type': 'application/json'
