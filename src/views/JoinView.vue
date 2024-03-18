@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     joinCar() {
-      fetch('http://localhost:4000/cars')
+      fetch(`${import.meta.env.VITE_API_URL}/cars`)
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok')
@@ -58,7 +58,7 @@ export default {
             this.participants.push(user.loggedInUser.id)
             console.log(this.participants[0])
             console.log(foundCarId)
-            fetch(`http://localhost:4000/cars/${foundCarId}`, {
+            fetch(`${import.meta.env.VITE_API_URL}/cars/${foundCarId}`, {
               method: 'PATCH',
               headers: {
                 'Content-Type': 'application/json'

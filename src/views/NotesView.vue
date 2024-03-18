@@ -64,7 +64,7 @@ export default {
   methods: {
     addNotes() {
       console.log(this.addedNotes)
-      fetch(`http://localhost:4000/users/${this.user.loggedInUser.id}`, {
+      fetch(`${import.meta.env.VITE_API_URL}/users/${this.user.loggedInUser.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
@@ -89,7 +89,7 @@ export default {
     },
     async fetchEvents() {
       // Fetch der events
-      const response = await fetch('http://localhost:4000/events')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/events`)
       if (!response.ok) {
         throw new Error('Failed to fetch events data')
       }
@@ -97,7 +97,7 @@ export default {
     },
     // Fetch der User
     async fetchUsers() {
-      const response = await fetch('http://localhost:4000/users')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users`)
       if (!response.ok) {
         throw new Error('Failed to fetch users data')
       }

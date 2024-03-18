@@ -156,7 +156,7 @@ export default {
         driverId: this.user.loggedInUser.id,
         finished: false
       }
-      fetch('http://localhost:4000/events', {
+      fetch(`${import.meta.env.VITE_API_URL}/events`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

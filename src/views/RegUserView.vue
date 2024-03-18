@@ -85,7 +85,7 @@ export default {
         lastName: this.lastName,
         email: this.email
       }
-      fetch('http://localhost:4000/users', {
+      fetch(`${import.meta.env.VITE_API_URL}/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
