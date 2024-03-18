@@ -74,6 +74,7 @@ export default {
                 return response.json()
               })
               .then((updatedCar) => {
+                this.$router.push('/home')
                 console.log('Car participants updated:', updatedCar)
               })
               .catch((error) => {
