@@ -1,4 +1,7 @@
 <template>
+  <button>
+    <RouterLink to="/home"><i class="fa-solid fa-circle-chevron-left"></i></RouterLink>
+  </button>
   <div>
     <h1 class="h1-event">{{ eventToStart.description }}</h1>
   </div>
@@ -13,6 +16,7 @@
       die MitfahrerInnen(in der Darstellung als MitfahrerInnen-Icon) und evt
     ein Kommentar zur Fahrt als eventNote-->
   <div class="ride-info-block">
+    <p>{{ eventToStart.type }}</p>
     <p>Von</p>
     <p>{{ eventToStart.start }}</p>
     <p>Bis</p>
@@ -21,7 +25,7 @@
     <p>{{ eventParticipants }}</p>
     <p>{{ eventToStart.notes }}</p>
   </div>
-  <form v-if="isRideFinished" class="endride">
+  <form @submit.prevent="updateCarKilometer()" v-if="isRideFinished" class="endride">
     <div class="popup">
       <p class="text1">Deine Fahrt ist zu Ende!</p>
       <p class="text2">Bis zum nächsten Mal</p>
@@ -39,9 +43,9 @@
         v-model="afterRideNotes"
         placeholder="Hinterlasse eine Notiz"
       />
-      <div @click="updateCarKilometer()">
+      <button>
         <i class="fa-regular fa-circle-check"></i>
-      </div>
+      </button>
     </div>
   </form>
   <div class="btn-container">
@@ -249,7 +253,7 @@ export default {
   width: 25rem;
   height: 20rem;
   position: absolute;
-  left: 1rem;
+  left: 0.8rem;
   top: 20rem;
 }
 .endride {
@@ -259,8 +263,8 @@ export default {
   height: 926px;
   margin: auto;
   margin-top: 0.9rem;
-  top: -4.4rem;
-  left: -1.85rem;
+  top: -1rem;
+  left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
@@ -280,5 +284,16 @@ export default {
 .fa-regular {
   color: var(--beige-light);
   margin-top: 1.5rem;
+}
+
+.h1-event {
+  display: flex;
+  margin-left: 30px;
+}
+.fa-solid {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: var(--orange);
 }
 </style>
