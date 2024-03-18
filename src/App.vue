@@ -99,7 +99,7 @@ export default {
   position: absolute;
   top: 20px;
   right: 65px;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -116,7 +116,7 @@ export default {
 .navbar .menu-items {
   height: 35%;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   right: 0;
   background-color: var(--green-dark);
