@@ -35,11 +35,28 @@
           </div>
         </div>
         <!--hier nutzen wir ein fontawesome-Zeichen, alert einfügen-->
+
+        <form @submit.prevent="deleteEvent(index, event.key)" v-if="askDelete" class="delete-ride">
+          <div class="popup">
+            <p class="text1">Möchtest du deine Fahrt wirklich löschen?</p>
+            <br /><br />
+            <br /><br />
+            <div class="btn-popup">
+              <button @click="askDelete = false" class="btn-cancel">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+              <button type="submit" class="btn-delete">
+                <i class="fa-regular fa-circle-check"></i>
+              </button>
+            </div>
+          </div>
+        </form>
         <div class="event-container-rechts">
           <button>
             <router-link :to="'/edit-ride/'"><i class="fa-solid fa-pen-to-square"></i></router-link>
           </button>
-          <button @click="confirmDelete(index, event.key)">
+          <!-- @click="isRideFinished = true" -->
+          <button @click="askDelete = true">
             <i class="fa-solid fa-trash"></i>
           </button>
           <!--hier nutzen wir ein fontawesome-Zeichen-->
@@ -56,7 +73,8 @@
 export default {
   data() {
     return {
-      attrs: []
+      attrs: [],
+      askDelete: null
     }
   },
   mounted() {
@@ -129,7 +147,7 @@ export default {
       this.attrs.splice(index, 1)
       // Fahrt löschen, zunächst aus dem attrs-array löschen, dann mit eventId aus der API
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/${eventId}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/events/${eventId}`, {
           method: 'DELETE'
         })
 
@@ -140,13 +158,6 @@ export default {
         console.log('Event deleted successfully from the server')
       } catch (error) {
         console.error('Error deleting event:', error)
-      }
-    },
-    confirmDelete(index, eventId) {
-      if (confirm('Bist du sicher, dass du die Fahrt löschen willst?')) {
-        // Popup-Abfrage, ob User tatsächlich Fahrt löschen möchte,
-        //dann Ausführung der deleteEvent-Funktion
-        this.deleteEvent(index, eventId)
       }
     }
   }
@@ -250,6 +261,8 @@ button {
 }
 
 .event-name {
+  border: 1px- red solid;
+  width: 16rem;
   font-weight: 700;
   margin-top: 15px;
   font-size: 15px;
@@ -267,6 +280,50 @@ button {
   font-weight: 500;
   font-size: 15px;
   line-height: 17.61px;
+}
+
+.popup {
+  background-color: var(--green-dark);
+  text-align: center;
+  width: 25rem;
+  height: 20rem;
+  position: absolute;
+  left: 0.8rem;
+  top: 20rem;
+}
+
+.btn-popup {
+  font-size: 3rem;
+}
+
+.btn-cancel {
+  margin-right: 2.5rem;
+}
+
+.btn-delete {
+  margin-left: 2.5rem;
+}
+
+.text1 {
+  color: var(--beige-light);
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.delete-ride {
+  position: absolute; /* Sit on top of the page content */
+  /*display: none; /* Hidden by default */
+  width: 428px;
+  height: 926px;
+  margin: auto;
+  margin-top: 0.9rem;
+  top: -29.8rem;
+  left: -1.4rem;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
 }
 </style>
 
