@@ -11,7 +11,7 @@ export const useUserStore = defineStore('user', {
   },
   actions: {
     login(email, password) {
-      fetch(`${import.meta.env.VITE_API_URL}/users`)
+      return fetch(`${import.meta.env.VITE_API_URL}/users`)
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok')

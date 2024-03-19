@@ -177,11 +177,12 @@ export default {
         })
         .then((responseData) => {
           console.log('Data posted successfully:', responseData)
+          this.$router.push('/calendar')
         })
         .catch((error) => {
           console.error('Error posting data:', error)
         })
-      return this.$router.push('/calendar')
+      return
     }
   }
 }
@@ -238,9 +239,6 @@ export default {
   font-style: italic;
   text-align: center;
   margin: 0px;
-}
-
-.input-choose:checked {
 }
 
 .input-choose:checked::before {
