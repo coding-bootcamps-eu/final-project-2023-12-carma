@@ -1,7 +1,7 @@
 <!-- an Figma angepasst cm -->
 <template>
+  <!-- Überschrift -->
   <div>
-    <!-- Überschrift -->
     <h1 class="h1-event">Deine <br />nächste Fahrt</h1>
   </div>
   <div class="flex-container">
@@ -36,6 +36,7 @@
             placeholder="Von"
             required
           />
+
           <input
             class="input-date"
             type="datetime-local"
@@ -86,33 +87,41 @@
         <div class="input-choose-container">
           <!-- Auswahl des EventType, später POST zur API, eventType -->
 
-          <label for="freie-fahrt">
+          <div class="input-choose-wrapper">
             <input
               class="input-choose"
               type="radio"
               v-model="eventType"
               id="freie-fahrt"
-              value="freie-fahrt"
+              value="Freie Fahrt"
               name="radio"
               required
-            />Freie Fahrt
-          </label>
-          <label for="muss-sein">
+            />
+          </div>
+          Freie Fahrt
+          <label class="label-freie-fahrt" for="freie-fahrt"></label>
+
+          <div class="input-choose-wrapper">
             <input
               class="input-choose"
               type="radio"
               v-model="eventType"
               id="muss-sein"
-              value="muss-sein"
+              value="Muss sein"
               name="radio"
-            />Muss sein
-          </label>
+            />
+          </div>
+          Muss sein
+          <label class="label-muss-sein" for="muss-sein"> </label>
         </div>
       </div>
 
       <div class="btn-container">
-        <button class="btn-main-short">ABBRECHEN</button
-        ><button class="btn-main-short" type="submit">
+        <!-- <button class="btn-main-short">ABBRECHEN</button>-->
+        <router-link :to="'/calendar/'"
+          ><button class="btn-main-short">ABBRECHEN</button></router-link
+        >
+        <button class="btn-main-short" type="submit">
           FERTIG
           <div class="btn-main-short-mini-bus"></div>
         </button>
@@ -153,7 +162,7 @@ export default {
         driverId: this.user.loggedInUser.id,
         finished: false
       }
-      fetch('http://localhost:4000/events', {
+      fetch(`${import.meta.env.VITE_API_URL}/events`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -204,21 +213,46 @@ export default {
   margin-top: 15px;
 }
 
+.input-choose-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-left: 2rem;
+  margin-right: 0.5rem;
+}
+
 .input-choose {
   background-color: var(--beige-light);
   border: solid 0.1rem var(--orange);
   border-radius: 50%;
-  padding: 0.5rem;
-  width: 0.5rem;
-  height: 0.5rem;
+  box-sizing: border-box;
+
+  padding: 0rem;
+  width: 1.1rem;
+  height: 1.1rem;
 
   color: var(--orange);
   font-size: 15px;
   font-weight: light;
   font-style: italic;
   text-align: center;
-  margin-left: 2rem;
-  margin-right: 0.5rem;
+  margin: 0px;
+}
+
+.input-choose:checked {
+}
+
+.input-choose:checked::before {
+  content: '';
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background-color: var(--orange);
+  display: block;
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
 }
 
 .input-date {
@@ -283,8 +317,7 @@ select {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-left: -30px;
-
+  margin-left: 10px;
   position: absolute;
   bottom: 6rem;
 }

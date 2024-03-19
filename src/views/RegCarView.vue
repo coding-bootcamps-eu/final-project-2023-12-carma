@@ -62,7 +62,7 @@ export default {
         licensePlate: this.licensePlate,
         participants: [this.userStore.loggedInUser.id]
       }
-      fetch('http://localhost:4000/cars', {
+      fetch(`${import.meta.env.VITE_API_URL}/cars`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -77,11 +77,11 @@ export default {
         })
         .then((responseData) => {
           console.log('Data posted successfully:', responseData)
+          this.$router.push('/home')
         })
         .catch((error) => {
           console.error('Error posting data:', error)
         })
-      return this.$router.push('/home')
     }
     // goToRegCar() {
     //   this.$router.push('/register/car')

@@ -43,15 +43,15 @@ export default {
   height: 30px;
   width: 30px;
   position: absolute;
-  /* background-color: var(--user-3); */
   border-radius: 50%;
+  background-color: var(--green-light);
   color: var(--beige-light);
   text-align: center;
   line-height: 30px;
   right: 15px;
   padding: 3px;
   margin-top: 15px;
-  z-index: 3;
+  z-index: 4;
 }
 
 .logout {
@@ -63,7 +63,7 @@ export default {
   text-align: center;
   line-height: 8rem;
   font-size: 15px;
-  z-index: 3;
+  z-index: 4;
   overflow-x: hidden;
   color: var(--beige-light);
 }

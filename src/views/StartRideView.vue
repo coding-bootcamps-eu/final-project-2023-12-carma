@@ -1,27 +1,40 @@
 <template>
+  <button>
+    <RouterLink to="/home"><i class="fa-solid fa-circle-chevron-left"></i></RouterLink>
+  </button>
   <div>
     <h1 class="h1-event">{{ eventToStart.description }}</h1>
   </div>
 
-  <!--Anzeige des EventType mit Zusatzspruch, "Aber ist gut fürs Carma" oder
-  "voraus!", evt mit v-if oder v-show?-->
-  <div>
-    <p>{{ eventType }}</p>
-    <p>{{ eventTypeP }}</p>
-  </div>
   <!--Als Block dargestellte Infos über das Event, Start und Ende, wer sind 
       die MitfahrerInnen(in der Darstellung als MitfahrerInnen-Icon) und evt
     ein Kommentar zur Fahrt als eventNote-->
-  <div class="ride-info-block">
-    <p>Von</p>
-    <p>{{ eventToStart.start }}</p>
-    <p>Bis</p>
-    <p>{{ eventToStart.end }}</p>
-    <p>Du fährst mit</p>
-    <p>{{ eventParticipants }}</p>
-    <p>{{ eventToStart.notes }}</p>
+  <div class="frei-muss-container">
+    <p class="frei-oder-muss">{{ eventToStart.type }}</p>
+    <div class="event-satz">
+      <p v-if="eventToStart.type === 'Freie Fahrt'">*voraus</p>
+      <p v-if="eventToStart.type === 'Muss sein'">*Aber ist gut fürs Carma</p>
+    </div>
   </div>
-  <form v-if="isRideFinished" class="endride">
+
+  <div class="start-ride-block">
+    <div class="text-ride-block">
+      <p>Von:</p>
+      <p>{{ eventToStart.start }}</p>
+    </div>
+
+    <div class="text-ride-block">
+      <p>Bis:</p>
+      <p>{{ eventToStart.end }}</p>
+    </div>
+
+    <!-- <div class="text-ride-block">
+      <p>Du fährst mit:</p>
+      <p>{{ eventParticipants }}</p>
+      <p>{{ eventToStart.notes }}</p>
+    </div> -->
+  </div>
+  <form @submit.prevent="updateCarKilometer()" v-if="isRideFinished" class="endride">
     <div class="popup">
       <p class="text1">Deine Fahrt ist zu Ende!</p>
       <p class="text2">Bis zum nächsten Mal</p>
@@ -39,8 +52,10 @@
         v-model="afterRideNotes"
         placeholder="Hinterlasse eine Notiz"
       />
-      <div @click="updateCarKilometer()">
-        <i class="fa-regular fa-circle-check"></i>
+      <div>
+        <button>
+          <i class="fa-regular fa-circle-check"></i>
+        </button>
       </div>
     </div>
   </form>
@@ -91,7 +106,7 @@ export default {
   methods: {
     async fetchEvents() {
       // Fetch der events
-      const response = await fetch('http://localhost:4000/events')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/events`)
       if (!response.ok) {
         throw new Error('Failed to fetch events data')
       }
@@ -99,14 +114,14 @@ export default {
     },
     // Fetch der User
     async fetchUsers() {
-      const response = await fetch('http://localhost:4000/users')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users`)
       if (!response.ok) {
         throw new Error('Failed to fetch users data')
       }
       return await response.json()
     },
     async fetchCars() {
-      const response = await fetch('http://localhost:4000/cars')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/cars`)
       if (!response.ok) {
         throw new Error('Failed to fetch cars data')
       }
@@ -162,7 +177,7 @@ export default {
       }
     },
     updateCarKilometer() {
-      fetch('http://localhost:4000/cars')
+      fetch(`${import.meta.env.VITE_API_URL}/cars`)
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok')
@@ -173,7 +188,7 @@ export default {
           const foundCar = data.find((car) => car.licensePlate === this.licensePlate)
 
           if (foundCar) {
-            fetch(`http://localhost:4000/cars/1`, {
+            fetch(`${import.meta.env.VITE_API_URL}/cars/1`, {
               method: 'PATCH',
               headers: {
                 'Content-Type': 'application/json'
@@ -191,7 +206,7 @@ export default {
               .then((updatedCar) => {
                 console.log('Car kilometer updated:', updatedCar)
                 this.eventKilometer = this.carKilometer - foundCar.kilometer
-                fetch(`http://localhost:4000/events/${this.eventToStart.id}`, {
+                fetch(`${import.meta.env.VITE_API_URL}/events/${this.eventToStart.id}`, {
                   method: 'PATCH',
                   headers: {
                     'Content-Type': 'application/json'
@@ -232,6 +247,43 @@ export default {
 </script>
 
 <style scoped>
+.frei-muss-container {
+  display: flex;
+  display: row;
+  align-self: baseline;
+}
+
+.frei-oder-muss {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 0.3rem;
+  padding: 1rem;
+  width: 5rem;
+  margin-bottom: 1.5rem;
+  margin-left: 2.2rem;
+}
+
+.event-satz {
+  margin-left: 1rem;
+  padding: 1rem;
+  width: 12rem;
+}
+
+.start-ride-block {
+  background-color: var(--beige-light);
+  border: solid 0.1rem var(--orange);
+  border-radius: 0.4rem;
+  width: 22.25rem;
+
+  margin: auto;
+}
+
+.text-ride-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .btn-container {
   display: flex;
   flex-direction: row;
@@ -243,13 +295,14 @@ export default {
   bottom: 6rem;
 }
 
+/* popup */
 .popup {
   background-color: var(--green-dark);
   text-align: center;
   width: 25rem;
   height: 20rem;
   position: absolute;
-  left: 1rem;
+  left: 0.8rem;
   top: 20rem;
 }
 .endride {
@@ -259,8 +312,8 @@ export default {
   height: 926px;
   margin: auto;
   margin-top: 0.9rem;
-  top: -4.4rem;
-  left: -1.85rem;
+  top: -1rem;
+  left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
@@ -280,5 +333,16 @@ export default {
 .fa-regular {
   color: var(--beige-light);
   margin-top: 1.5rem;
+}
+
+.h1-event {
+  display: flex;
+  margin-left: 30px;
+}
+.fa-solid {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: var(--orange);
 }
 </style>

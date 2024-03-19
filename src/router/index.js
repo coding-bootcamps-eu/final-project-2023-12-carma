@@ -137,7 +137,7 @@ const router = createRouter({
       name: 'notes',
       component: NotesView,
       meta: {
-        hasMainMenu: false,
+        hasMainMenu: true,
         hasBlueLogo: true,
         hasUserIcon: true,
         needsAuth: true
@@ -148,7 +148,7 @@ const router = createRouter({
       name: 'about',
       component: AboutView,
       meta: {
-        hasMainMenu: false,
+        hasMainMenu: true,
         hasBlueLogo: true,
         hasUserIcon: true,
         needsAuth: true
@@ -159,7 +159,7 @@ const router = createRouter({
       name: 'legal',
       component: LegalView,
       meta: {
-        hasMainMenu: false,
+        hasMainMenu: true,
         hasBlueLogo: true,
         hasUserIcon: true,
         needsAuth: true
@@ -181,7 +181,7 @@ const router = createRouter({
       name: 'logbook',
       component: LogbookView,
       meta: {
-        hasMainMenu: false,
+        hasMainMenu: true,
         hasBlueLogo: true,
         hasUserIcon: true,
         needsAuth: true
@@ -192,7 +192,7 @@ const router = createRouter({
       name: 'map',
       component: MapView,
       meta: {
-        hasMainMenu: false,
+        hasMainMenu: true,
         hasBlueLogo: true,
         hasUserIcon: true,
         needsAuth: true
@@ -203,7 +203,7 @@ const router = createRouter({
       name: 'carma-points',
       component: CarmaPointsView,
       meta: {
-        hasMainMenu: false,
+        hasMainMenu: true,
         hasBlueLogo: true,
         hasUserIcon: true,
         needsAuth: true

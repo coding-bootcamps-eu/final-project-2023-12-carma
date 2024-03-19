@@ -16,7 +16,9 @@
           />
         </div>
         <div class="btn-container">
-          <button type="submit" class="btn-pre-large">los geht's!</button>
+          <button type="submit" class="btn-pre-large">
+            <router-link to="/home">los geht's!</router-link>
+          </button>
         </div>
       </form>
     </div>
@@ -42,7 +44,7 @@ export default {
   },
   methods: {
     joinCar() {
-      fetch('http://localhost:4000/cars')
+      fetch(`${import.meta.env.VITE_API_URL}/cars`)
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok')
@@ -58,7 +60,7 @@ export default {
             this.participants.push(user.loggedInUser.id)
             console.log(this.participants[0])
             console.log(foundCarId)
-            fetch(`http://localhost:4000/cars/${foundCarId}`, {
+            fetch(`${import.meta.env.VITE_API_URL}/cars/${foundCarId}`, {
               method: 'PATCH',
               headers: {
                 'Content-Type': 'application/json'
@@ -74,6 +76,7 @@ export default {
                 return response.json()
               })
               .then((updatedCar) => {
+                this.$router.push('/home')
                 console.log('Car participants updated:', updatedCar)
               })
               .catch((error) => {

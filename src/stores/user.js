@@ -11,7 +11,7 @@ export const useUserStore = defineStore('user', {
   },
   actions: {
     login(email, password) {
-      fetch('http://localhost:4000/users')
+      fetch(`${import.meta.env.VITE_API_URL}/users`)
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok')
@@ -32,6 +32,7 @@ export const useUserStore = defineStore('user', {
     },
     logout() {
       this.loggedInUser = null
+      console.log('Logout erfolgreich')
     }
   },
   persist: true

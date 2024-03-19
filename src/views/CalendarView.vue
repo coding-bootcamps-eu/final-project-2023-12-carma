@@ -1,8 +1,6 @@
 <template>
-  <!--das ist verrückt, nur eine Notlösung mit dem Inline-Style-->
   <div style="height: 0.03px"></div>
   <div class="container-calendar">
-    <!--V-Calendar-Plugin attributes werden im method-Abschnitt gebindet-->
     <VCalendar
       :initial-page="{ month: 3, year: 2024 }"
       :attributes="attrs"
@@ -17,7 +15,29 @@
       <RouterLink to="/new-ride"> <i class="fa-solid fa-plus fa-2xl"></i></RouterLink>
     </button>
   </div>
-  <!--hier nutzen wir ein fontawesome-Zeichen-->
+
+  <form @submit.prevent v-if="askDelete" class="delete-ride">
+    <div class="popup">
+      <p class="text1">
+        Möchtest du deine Fahrt: "{{ this.attrs[this.deleteIndex].description }}" wirklich löschen?
+      </p>
+      <br /><br />
+      <br /><br />
+      <div class="btn-popup">
+        <button @click="cancelDelete" class="btn-cancel">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button
+          type="submit"
+          class="btn-delete"
+          @click="confirmDelete(index, attrs[deleteIndex].key)"
+        >
+          <i class="fa-regular fa-circle-check"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+
   <div class="event-container">
     <ul class="ul-style">
       <li class="event-li" v-for="(event, index) in attrs" :key="index">
@@ -27,36 +47,33 @@
           </div>
 
           <div class="event-name">{{ event.description }}</div>
-          <!--<div class="event-start">Start: {{ event.dates.start.toLocaleDateString('de-DE') }}</div>
-        <div class="event-end">End: {{ event.dates.end.toLocaleDateString('de-DE') }}</div>-->
           <div class="event-date">
             {{ event.dates.start.toLocaleDateString('de-DE') }} -
             {{ event.dates.end.toLocaleDateString('de-DE') }}
           </div>
         </div>
-        <!--hier nutzen wir ein fontawesome-Zeichen, alert einfügen-->
+
         <div class="event-container-rechts">
           <button>
             <router-link :to="'/edit-ride/'"><i class="fa-solid fa-pen-to-square"></i></router-link>
           </button>
-          <button @click="confirmDelete(index, event.key)">
+          <button @click="showDeleteForm(index)">
             <i class="fa-solid fa-trash"></i>
           </button>
-          <!--hier nutzen wir ein fontawesome-Zeichen-->
         </div>
       </li>
     </ul>
   </div>
-
-  <!--hier muss das jeweilige li aus der ul entfernt werden,
-        vorher noch einen alert "wirklich löschen?", das könnte man in einer method anlegen, die @click dann ausgeführt wird-->
 </template>
 
 <script>
 export default {
   data() {
     return {
-      attrs: []
+      attrs: [],
+      askDelete: false,
+      users: [],
+      deleteIndex: null
     }
   },
   mounted() {
@@ -76,7 +93,7 @@ export default {
   methods: {
     async fetchEvents() {
       // Fetch der events
-      const response = await fetch('http://localhost:4000/events')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/events`)
       if (!response.ok) {
         throw new Error('Failed to fetch events data')
       }
@@ -84,7 +101,7 @@ export default {
     },
     // Fetch der User
     async fetchUsers() {
-      const response = await fetch('http://localhost:4000/users')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users`)
       if (!response.ok) {
         throw new Error('Failed to fetch users data')
       }
@@ -125,14 +142,23 @@ export default {
         }
       })
     },
-    async deleteEvent(index, eventId) {
+    showDeleteForm(index) {
+      this.askDelete = true
+      this.deleteIndex = index
+    },
+    cancelDelete() {
+      this.askDelete = false
+      this.deleteIndex = null
+    },
+    async confirmDelete(index, eventId) {
       this.attrs.splice(index, 1)
       // Fahrt löschen, zunächst aus dem attrs-array löschen, dann mit eventId aus der API
       try {
-        const response = await fetch(`http://localhost:4000/events/${eventId}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/events/${eventId}`, {
           method: 'DELETE'
         })
-
+        this.askDelete = false
+        this.deleteIndex = null
         if (!response.ok) {
           throw new Error('Failed to delete event from the server')
         }
@@ -140,13 +166,6 @@ export default {
         console.log('Event deleted successfully from the server')
       } catch (error) {
         console.error('Error deleting event:', error)
-      }
-    },
-    confirmDelete(index, eventId) {
-      if (confirm('Bist du sicher, dass du die Fahrt löschen willst?')) {
-        // Popup-Abfrage, ob User tatsächlich Fahrt löschen möchte,
-        //dann Ausführung der deleteEvent-Funktion
-        this.deleteEvent(index, eventId)
       }
     }
   }
@@ -250,6 +269,8 @@ button {
 }
 
 .event-name {
+  border: 1px- red solid;
+  width: 16rem;
   font-weight: 700;
   margin-top: 15px;
   font-size: 15px;
@@ -267,6 +288,50 @@ button {
   font-weight: 500;
   font-size: 15px;
   line-height: 17.61px;
+}
+
+.popup {
+  background-color: var(--green-dark);
+  text-align: center;
+  width: 25rem;
+  height: 20rem;
+  position: absolute;
+  left: 0.8rem;
+  top: 20rem;
+}
+
+.btn-popup {
+  font-size: 3rem;
+}
+
+.btn-cancel {
+  margin-right: 2.5rem;
+}
+
+.btn-delete {
+  margin-left: 2.5rem;
+}
+
+.text1 {
+  color: var(--beige-light);
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.delete-ride {
+  position: absolute; /* Sit on top of the page content */
+  /*display: none; /* Hidden by default */
+  width: 428px;
+  height: 926px;
+  margin: auto;
+  margin-top: 0.9rem;
+  top: -0.8rem;
+  left: 0.2rem;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
 }
 </style>
 

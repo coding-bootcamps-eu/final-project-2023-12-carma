@@ -4,22 +4,22 @@
   </div>
 
   <div class="container-next-ride">
-    <div class="btn-main-long">
+    <div class="btn-home">
       <p v-if="nextEventStartDate" @click="$router.push('/start-ride')">
         Nächste Fahrt am: {{ nextEventStartDate.toLocaleDateString('de-DE') }}
       </p>
-      <p v-else @click="$router.push('/calendar')">Keine weitere Fahrt eingetragen</p>
+      <p v-else @click="$router.push('/calendar')">Fahrt eintragen</p>
     </div>
   </div>
 
-  <div v-for="car in cars" :key="car.id" class="car-container" @click="$router.push('/registered')">
+  <div v-for="car in cars" :key="car.id" class="car-container">
     <div class="car-group">
       <i class="fa-solid fa-car"></i>
-      <p>{{ car.name }}</p>
+      <p class="car-text">{{ car.name }}</p>
     </div>
-    <div class="car-kilometer">
+    <div class="car-kilometer" @click="$router.push('/logbuch')">
       <i class="fa-solid fa-gauge-simple-high"></i>
-      <p>{{ car.kilometer }} km</p>
+      <p class="kilometer-text">{{ car.kilometer }} km</p>
     </div>
   </div>
   <!--aktuell aus Datenbank des jeweilige Autos-->
@@ -50,8 +50,14 @@ export default {
   },
   data() {
     return {
-      attrs: [],
+      attrs: [
+        // {
+        //   highlight: pink,
+        //   dates: new Date()
+        // }
+      ],
       cars: [],
+      users: [],
       nextEventStartDate: null
     }
   },
@@ -70,7 +76,7 @@ export default {
   methods: {
     async fetchEvents() {
       // Fetch der events
-      const response = await fetch('http://localhost:4000/events')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/events`)
       if (!response.ok) {
         throw new Error('Failed to fetch events data')
       }
@@ -78,14 +84,14 @@ export default {
     },
     // Fetch der User
     async fetchUsers() {
-      const response = await fetch('http://localhost:4000/users')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users`)
       if (!response.ok) {
         throw new Error('Failed to fetch users data')
       }
       return await response.json()
     },
     async fetchCars() {
-      const response = await fetch('http://localhost:4000/cars')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/cars`)
       if (!response.ok) {
         throw new Error('Failed to fetch cars data')
       }
@@ -124,6 +130,7 @@ export default {
         }
       })
     },
+
     findNextEventStartDate(events) {
       const loggedInUserId = this.user.loggedInUser.id
       const userEvents = events.filter(
@@ -158,24 +165,15 @@ export default {
   border-radius: 4px;
   width: 23.5rem;
   margin: auto;
-  margin-top: 73px;
+  margin-top: 40px;
+
+  transition:
+    background-color 0.5s ease,
+    transform 0.5s ease;
 }
 
 .container:hover {
-  background-color: var(--blue);
-  transform: scale(1.05);
-}
-
-.container-next-ride {
-  background-color: var(--beige-light);
-  border-radius: 4px;
-  width: 23.5rem;
-  margin: auto;
-  margin-top: 73px;
-}
-
-.container-next-ride:hover {
-  background-color: var(--blue);
+  background-color: var(--beige-dark);
   transform: scale(1.05);
 }
 
@@ -184,23 +182,81 @@ export default {
 }
 
 .car-container {
-  margin-top: 4rem;
-  margin-left: 6rem;
+  margin-top: 3rem;
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .car-group:hover {
-  background-color: var(--blue);
   transform: scale(1.05);
 }
 
 .car-group {
+  margin-left: 1.2rem;
   font-size: 2rem;
-  margin-right: 3rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition:
+    background-color 0.5s ease,
+    transform 0.5s ease;
+}
+
+.car-text {
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .car-kilometer {
   margin-left: 1.2rem;
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition:
+    background-color 0.5s ease,
+    transform 0.5s ease;
+}
+
+.car-kilometer:hover {
+  transform: scale(1.05);
+}
+
+.kilometer-text {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.container-next-ride {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.btn-home {
+  background-color: var(--beige-light);
+  border-radius: 0.4rem;
+  margin: auto;
+  width: 16rem;
+  padding: 0.3rem;
+
+  color: var(--blue);
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+
+  transition:
+    background-color 0.5s ease,
+    transform 0.5s ease;
+}
+
+.btn-home:hover {
+  background-color: var(--beige-dark);
+  transform: scale(1.05);
 }
 </style>
