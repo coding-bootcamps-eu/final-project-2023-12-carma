@@ -82,10 +82,10 @@ export default {
 .navbar .nav-container a {
   text-decoration: none;
   color: var(--beige-light);
-  font-size: 15px;
-  padding: 2rem;
-  line-height: 1.5rem;
+  font-size: 18px;
+  line-height: 1.7rem;
   text-align: right;
+  transition: opacity 0.5s ease-in-out; /* Übergangseffekt für Opazität hinzufügen */
 }
 
 .navbar .nav-container a:hover {
@@ -158,12 +158,11 @@ export default {
   transition: transform 0.4s ease-in-out;
 }
 
-.fa-regular {
-  color: var(--beige-light);
-}
-
+.fa-regular,
 .fa-solid {
   color: var(--beige-light);
+  width: 3rem;
+  transition: opacity 0.1s ease-in-out; /* Übergangseffekt für Opazität hinzufügen */
 }
 
 .blue {

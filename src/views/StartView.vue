@@ -6,7 +6,7 @@
       </h1>
       <h2 class="header-two">
         <span>ONE</span> <span>-</span> <span>TWO</span> <span>-</span> <span>YOU</span>
-        <div class="orange-circle"></div>
+        <!-- <div class="orange-circle"></div> -->
       </h2>
       <div class="btn-container">
         <button>
@@ -14,8 +14,6 @@
         </button>
         <button><router-link to="/login" class="btn-pre-small">log in</router-link></button>
       </div>
-      <div class="wiese"></div>
-      <div class="bus"></div>
     </div>
   </section>
 </template>
