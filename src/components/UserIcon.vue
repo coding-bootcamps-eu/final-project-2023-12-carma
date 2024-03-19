@@ -64,7 +64,7 @@ export default {
   right: 0;
   text-align: center;
   line-height: 8rem;
-  font-size: 15px;
+  font-size: 18px;
   z-index: 4;
   overflow-x: hidden;
   color: var(--beige-light);
