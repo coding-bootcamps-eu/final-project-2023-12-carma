@@ -80,7 +80,7 @@ export default {
         // Event und User zusammenbringen
         const user = users.find((user) => user.id === event.driverId)
         this.colorId = event.driverId
-        if (user && event.finished && event.afterRideNotes !== '') {
+        if (user && event.finished) {
           // Wenn gefunden, formatieren des Start-Datums
           const startDateString = event.start.split('T')[0]
           const [year, month, day] = startDateString.split('-').map(Number)
