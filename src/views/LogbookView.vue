@@ -1,5 +1,5 @@
 <template>
-  <div><h1 class="h1-event">Fahrtenbuch</h1></div>
+  <div><h1 class="h1-event">Logbuch</h1></div>
   <div>
     <ul class="ul-style">
       <li v-for="(event, index) in attrs" :key="index" style="margin-top: 1rem">

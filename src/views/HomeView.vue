@@ -17,7 +17,7 @@
       <i class="fa-solid fa-car"></i>
       <p class="car-text">{{ car.name }}</p>
     </div>
-    <div class="car-kilometer" @click="$router.push('/logbuch')">
+    <div class="car-kilometer" @click="$router.push('/logbook')">
       <i class="fa-solid fa-gauge-simple-high"></i>
       <p class="kilometer-text">{{ car.kilometer }} km</p>
     </div>

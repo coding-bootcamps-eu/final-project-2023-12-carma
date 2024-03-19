@@ -51,8 +51,9 @@ export default {
   methods: {
     login() {
       const userStore = useUserStore()
-      userStore.login(this.email, this.password)
-      this.$router.push('/home')
+      userStore.login(this.email, this.password).then(() => {
+        this.$router.push('/home')
+      })
     }
   }
 }

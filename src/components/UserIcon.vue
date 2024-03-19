@@ -7,7 +7,10 @@
   <div
     class="icon"
     @click="isLogoutOpen = !isLogoutOpen"
-    :style="{ backgroundColor: `var(--user-${user.loggedInUser.id})` }"
+    :style="{
+      backgroundColor:
+        user.loggedInUser.id < 5 ? `var(--user-${user.loggedInUser.id})` : 'var(--green-light)'
+    }"
   >
     {{ user.loggedInUser.firstName[0] }}
   </div>
@@ -44,7 +47,6 @@ export default {
   width: 30px;
   position: absolute;
   border-radius: 50%;
-  background-color: var(--green-light);
   color: var(--beige-light);
   text-align: center;
   line-height: 30px;
@@ -62,7 +64,7 @@ export default {
   right: 0;
   text-align: center;
   line-height: 8rem;
-  font-size: 15px;
+  font-size: 18px;
   z-index: 4;
   overflow-x: hidden;
   color: var(--beige-light);
