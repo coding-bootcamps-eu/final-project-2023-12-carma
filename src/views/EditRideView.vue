@@ -88,8 +88,9 @@
       zurück bei abbrechen-->
 
   <div class="btn-container">
-    <button class="btn-main-short">ABBRECHEN</button
-    ><button class="btn-main-short" type="submit">
+    <!--<button class="btn-main-short">ABBRECHEN</button> -->
+    <router-link :to="'/calendar/'"><button class="btn-main-short">ABBRECHEN</button></router-link>
+    <button class="btn-main-short" type="submit">
       FERTIG
       <div class="btn-main-short-mini-bus"></div>
     </button>
@@ -163,6 +164,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-left: 35px;
 
   position: absolute;
   bottom: 6rem;
