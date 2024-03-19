@@ -138,4 +138,8 @@ export default {
   text-align: center;
   line-height: 30px;
 }
+.h1-event {
+  display: flex;
+  margin-left: 30px;
+}
 </style>
