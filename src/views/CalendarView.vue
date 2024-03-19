@@ -269,7 +269,6 @@ button {
 }
 
 .event-name {
-  border: 1px- red solid;
   width: 16rem;
   font-weight: 700;
   margin-top: 15px;
@@ -301,7 +300,8 @@ button {
 }
 
 .btn-popup {
-  font-size: 3rem;
+  font-size: 2rem;
+  color: var(--beige-light);
 }
 
 .btn-cancel {
@@ -314,8 +314,10 @@ button {
 
 .text1 {
   color: var(--beige-light);
-  font-size: 1.5rem;
-  margin-top: 2rem;
+  font-size: 20px;
+  width: 15rem;
+  margin: auto;
+  margin-top: 3rem;
 }
 
 .delete-ride {
@@ -325,8 +327,7 @@ button {
   height: 926px;
   margin: auto;
   margin-top: 0.9rem;
-  top: -0.8rem;
-  left: 0.2rem;
+  left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */

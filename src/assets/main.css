@@ -205,6 +205,12 @@ input {
   transform: scale(1.05);
 }
 
+.btn-pre-large:active,
+.btn-pre-large:visited,
+.btn-pre-large:focus {
+  color: var(--orange);
+}
+
 /* (siehe figma) */
 .input-pre {
   background-color: var(--beige-light);
