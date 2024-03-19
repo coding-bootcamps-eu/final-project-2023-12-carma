@@ -26,6 +26,9 @@
 <script></script>
 
 <style scoped>
+.h1-event {
+  margin-left: 30px;
+}
 .carma-text {
   background-color: var(--beige-light);
   border: solid 0.1rem var(--orange);
